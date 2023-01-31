@@ -1,2 +1,2 @@
-# parking-lot-tracker
-Tracks availability of parking slots across multiple parking lots in Ateneo de Manila University
+# dorm-service-tracker
+Tracks service hours and opportunities for dorm scholars of Ateneo de Manila University
