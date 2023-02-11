@@ -6,6 +6,7 @@ Tracks service hours and opportunities for dorm scholars of Ateneo de Manila Uni
 1. Create a virtual environment (open cmd in dorm-service-tracker and do `python3 -m venv venv`)
 2. Activate virtual environment (`venv\Scripts\activate`)
 3. Install packages into your virtual environment (`pip install -r requirements.txt`)
+4. Place `.env` file in your `dorm-service-tracker` folder
 
 ### If working on the project
 - Activate virtual environment (`venv\Scripts\activate`)
