@@ -11,3 +11,6 @@ Tracks service hours and opportunities for dorm scholars of Ateneo de Manila Uni
 - Activate virtual environment (`venv\Scripts\activate`)
 - Run server (` python manage.py runserver`)
 - IMPORTANT: Migrate your changes (`python manage.py migrate`)
+
+## URLs
+- Django Admin: http://127.0.0.1:8000/admin/
