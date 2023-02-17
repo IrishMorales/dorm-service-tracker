@@ -1,3 +1,13 @@
+DROP DATABASE IF EXISTS dormtracker;
+CREATE DATABASE dormtracker;
+USE dormtracker;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS scholar;
+DROP TABLE IF EXISTS admins;
+DROP TABLE IF EXISTS service_hour_listing;
+DROP TABLE IF EXISTS registration;
+DROP TABLE IF EXISTS assignment;
+
 CREATE TABLE user (
   user_id INT NOT NULL PRIMARY KEY,
   email VARCHAR(255),
@@ -25,7 +35,7 @@ CREATE TABLE service_hour_listing (
   serv_hours_task VARCHAR(255)
 );
 
-CREATE TABLE admin (
+CREATE TABLE admins (
   admin_id INT,
   FOREIGN KEY (admin_id) REFERENCES user(user_id)
 );
@@ -41,11 +51,11 @@ CREATE TABLE registration (
 );
 
 
-CREATE TABLE assigment (
-  assigment_id INT NOT NULL PRIMARY KEY,
+CREATE TABLE assignment (
+  assignment_id INT NOT NULL PRIMARY KEY,
   admin_id INT,
   serv_hours_id INT,
-  FOREIGN KEY (admin_id) REFERENCES admin(admin_id),
+  FOREIGN KEY (admin_id) REFERENCES admins(admin_id),
   FOREIGN KEY (serv_hours_id) REFERENCES service_hour_listing(serv_hours_id)
 );
 
