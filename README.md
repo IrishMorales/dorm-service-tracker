@@ -9,8 +9,8 @@ Tracks service hours and opportunities for dorm scholars of Ateneo de Manila Uni
 2. Activate virtual environment (`venv\Scripts\activate`)
 3. Install packages into your virtual environment (`pip install -r requirements.txt`)
 4. Place `.env` file in your `dorm-service-tracker` folder. Open this file and add two new lines:
-- DB_user = '<your MySQL username>'
-- DB_password = '<your MySQL password>'
+- DB_user = '`Enter your MySQL username here`'
+- DB_password = '`Enter your MySQL password here`'
 5. Run `pre-commit install` to use packages to clean up code
 
 ### If working on the project
