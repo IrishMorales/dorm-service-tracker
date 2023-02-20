@@ -4,6 +4,15 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-Hi {{ user.username }}!
-<p><a href="{% url 'logout' %}">Log Out</a></p>
+<header>
+    <p class="username">{{ user.username }}</p>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+</header>
+
+<body>
+    <div class="homepage-link"><p><a href="">Profile</a></p></div>
+    <div class="homepage-link"><p><a href="">White Card</a></p></div>
+    <div class="homepage-link"><p><a href="">Swap Hours</a></p></div>
+    <div class="homepage-link"><p><a href="">Contact</a></p></div>
+</body>
 {% endblock %}
