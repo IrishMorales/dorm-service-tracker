@@ -1,18 +1,22 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">-->
+  <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
   <title>{% block title %}Dorm Service Hours Tracker{% endblock %}</title>
 </head>
+
 <body>
   <main>
     {% block content %}
     {% endblock %}
+    <footer>
+      <p>© 2022 GoDaddy</p>
+    </footer>  
   </main>
-  <footer>
-    <p>© 2022 GoDaddy</p>
-  </footer>
 </body>
 </html>
