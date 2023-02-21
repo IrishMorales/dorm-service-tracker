@@ -18,9 +18,13 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from homepage.views import home_view
+from scholar_profile.views import profile_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")), # includes pages for login, logout, password changess
+    path(
+        "accounts/", include("django.contrib.auth.urls")
+    ),  # includes pages for login, logout, password changess
     path("", login_required(home_view.as_view()), name="home"),
+    path("profile/", login_required(profile_view.as_view()), name="profile"),
 ]
