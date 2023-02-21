@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
+from homepage.views import home_view
+from scholar_profile.views import profile_view
+from white_card.views import white_card_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")),
     path(
-        "", login_required(TemplateView.as_view(template_name="home.html")), name="home"
-    ),
+        "accounts/", include("django.contrib.auth.urls")
+    ),  # includes pages for login, logout, password changess
+    path("", login_required(home_view.as_view()), name="home"),
+    path("profile/", login_required(profile_view.as_view()), name="profile"),
+    path("white_card/", login_required(white_card_view.as_view()), name="white_card"),
 ]

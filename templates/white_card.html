@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}White Card{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'profile' %}">Profile</a></p>
+    <p><a href="">White Card</a></p>
+    <a href="{% url 'home' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<body>
+<h2>White Card</h2>
+<p><a href="">Browse Dorm Assistants' Kit</a></p>
+
+<div>
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>Surname, First Name MI.</td>
+            </tr>
+            <tr>
+                <th>ID Number</th>
+                <td>2XXXXX</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Bldg. & Room No.</th>
+                <td>UDS304</td>
+            </tr>
+            <tr>
+                <th>Contact No.</th>
+                <td>09XX - XXX - XXXX</td>
+            </tr>
+        </table>
+    </div>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Bldg</th>
+            <th>Remarks</th>
+            <th>Tasks Performed</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Month XX, 20XX</td>
+            <td>0000 - 0000</td>
+            <td>XXX</td>
+            <td>Remarks</td>
+            <td>Tasks Performed</td>
+            <td>Status</td>
+        </tr>
+    </table>
+</div>
+</body>
+{% endblock %}

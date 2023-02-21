@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<header>
+    <img class="logo" src="{% static 'logo.png' %}">
+</header>
+
+<body>
+<div class="flex-row user-info align-flex-right">
+    <p>{{ user.username }}</p>
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+</div>
+<div class="flex">
+    <div class="flex flex-row center">
+        <div class="card"><p class="center"><a href="{% url 'profile' %}">Profile</a></p></div>
+        <div class="card"><p class="center"><a href="{% url 'white_card' %}">White Card</a></p></div>
+        <div class="card"><p class="center"><a href="">Swap Hours</a></p></div>
+        <div class="card"><p class="center"><a href="">Contact</a></p></div>
+    </div>
+</div>
+</body>
+{% endblock %}
