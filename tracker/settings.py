@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "homepage",
     "scholar_profile",
+    "white_card",
 ]
 
 MIDDLEWARE = [
