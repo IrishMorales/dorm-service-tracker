@@ -120,3 +120,11 @@ table * {
 .profile-deloading, .profile-signup {
     text-align: center;
 }
+
+.white_card-table {
+    margin: 40px 0;
+}
+
+.white_card-table td {
+    border: 1px solid;
+}

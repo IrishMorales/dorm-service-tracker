@@ -16,53 +16,53 @@
 <h2>White Card</h2>
 <p><a href="">Browse Dorm Assistants' Kit</a></p>
 
-<div>
-    <div>
+<div class="card">
+    <div class="flex-row">
         <table>
-            <tr>
+            <tr class="align-left">
                 <th>Name</th>
                 <td>Surname, First Name MI.</td>
             </tr>
-            <tr>
+            <tr class="align-left">
                 <th>ID Number</th>
                 <td>2XXXXX</td>
             </tr>
         </table>
-    </div>
-
-    <div>
+        <div class="flex"></div>
         <table>
-            <tr>
+            <tr class="align-left">
                 <th>Bldg. & Room No.</th>
                 <td>UDS304</td>
             </tr>
-            <tr>
+            <tr class="align-left">
                 <th>Contact No.</th>
                 <td>09XX - XXX - XXXX</td>
             </tr>
         </table>
     </div>
 
-    <table>
-        <tr>
-            <th></th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Bldg</th>
-            <th>Remarks</th>
-            <th>Tasks Performed</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Month XX, 20XX</td>
-            <td>0000 - 0000</td>
-            <td>XXX</td>
-            <td>Remarks</td>
-            <td>Tasks Performed</td>
-            <td>Status</td>
-        </tr>
-    </table>
+    <div class="flex-column white_card-table">
+        <table class="flex">
+            <tr>
+                <th></th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Bldg</th>
+                <th>Remarks</th>
+                <th>Tasks Performed</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Month XX, 20XX</td>
+                <td>0000 - 0000</td>
+                <td>XXX</td>
+                <td>Remarks</td>
+                <td>Tasks Performed</td>
+                <td>Status</td>
+            </tr>
+        </table>
+    </div>
 </div>
 </main>
 {% endblock %}
