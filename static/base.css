@@ -10,18 +10,23 @@
 }
 
 html, body {
-    height: 100%;
     margin: 0;
-}
-
-main {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
+main {
+    flex: 1;
+    margin: 30px 80px 0 80px;
+}
+
 .flex {
     flex: 1;
+}
+
+.flex-3-2 {
+    flex: 1 1 auto;
 }
 
 .center {
@@ -40,22 +45,51 @@ main {
 .flex-row {
     display: flex;
     flex-flow: row wrap;
-    padding: 0px 20px;
+}
+
+.flex-column {
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .card {
     border: 1px solid black;
     border-radius: 5px;
-    width: 250px;
-    margin: 0px 10px;
-    height: 100%;
+    margin: 10px;
+    padding: 20px;
+}
+
+.homepage-card-div {
+    display: flex;
+    align-items: stretch;
+}
+
+.homepage-card {
+    width: 200px;
+}
+
+.align-right {
+    margin-left: auto;
 }
 
 header {
-    padding: 30px 0px;
-    text-align: center;
+    padding: 30px 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(9, 9, 9);
+    justify-content: space-around;
+}
+
+header a:link, header a:visited {
     color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+header a:hover {
+    color: salmon;
 }
 
 footer {
@@ -64,14 +98,33 @@ footer {
     font-size: 50%;
 }
 
-.user-info {
-    margin: 0px 30px;
-}
-
 .user-info p {
-    padding: 10px;
+    padding: 0px 10px;
 }
 
-.align-flex-right {
-    margin-left: auto;
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 20px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+table * {
+    padding-right: 50px;
+    margin: auto 0;
+}
+
+.profile-deloading, .profile-signup {
+    text-align: center;
+}
+
+.white_card-table {
+    margin: 40px 0;
+}
+
+.white_card-table td {
+    border: 1px solid;
 }
