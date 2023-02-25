@@ -1,24 +1,6 @@
 from django.db import models
 
 # Create your models here.
-class Admins(models.Model):
-    admin = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'admins'
-
-
-class Assignment(models.Model):
-    assignment_id = models.IntegerField(primary_key=True)
-    admin = models.ForeignKey(Admins, models.DO_NOTHING, blank=True, null=True)
-    serv_hours = models.ForeignKey('ServiceHourListing', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'assignment'
-
-
 class Registration(models.Model):
     reg_id = models.IntegerField(primary_key=True)
     scholar = models.ForeignKey('Scholar', models.DO_NOTHING, blank=True, null=True)
