@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "homepage",
-    "scholar_profile",
-    "white_card",
+    "UserLogin",
+    "Scholar",
+    "Admin",
 ]
 
 MIDDLEWARE = [
