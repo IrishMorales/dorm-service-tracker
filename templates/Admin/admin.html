@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Admin View{% endblock %}
+
+{% block content %}
+    <header>
+        <img class="logo" src="{% static 'logo.png' %}">
+    </header>
+    <br><br>
+    <hr class="header">
+    <div class="header">
+        ADMIN VIEW
+    </div>
+    <hr class="header">
+    <br>
+    <br>
+
+    {% for x in admin %}
+        {{x}}
+    {% endfor %}
+{% endblock %}

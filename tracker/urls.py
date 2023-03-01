@@ -29,4 +29,5 @@ urlpatterns = [
     path("", login_required(home_view.as_view()), name="home"),
     path("profile/", login_required(profile_view.as_view()), name="profile"),
     path("white_card/", login_required(white_card_view.as_view()), name="white_card"),
+    path("admin_views/", include("Admin.urls")),
 ]
