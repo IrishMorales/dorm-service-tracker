@@ -1,31 +1,18 @@
 from django.db import models
 
 # Create your models here.
-class Registration(models.Model):
-    reg_id = models.IntegerField(primary_key=True)
-    scholar = models.ForeignKey('Scholar', models.DO_NOTHING, blank=True, null=True)
-    serv_hours = models.ForeignKey('ServiceHourListing', models.DO_NOTHING, blank=True, null=True)
+class User(models.Model):
+    user_id = models.IntegerField(primary_key=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    user_password = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'registration'
+        db_table = 'user'
 
-
-class Scholar(models.Model):
-    scholar = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
-    hours_needed = models.IntegerField(blank=True, null=True)
-    hours_rendered = models.IntegerField(blank=True, null=True)
-    contact_no = models.CharField(max_length=20, blank=True, null=True)
-    room_code = models.CharField(max_length=50, blank=True, null=True)
-    room_name = models.CharField(max_length=100, blank=True, null=True)
-    scholar_year = models.IntegerField(blank=True, null=True)
-    course = models.CharField(max_length=100, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'scholar'
-
-
+    def __str__(self):
+        return "User#" + str(self.user_id)
+    
 class ServiceHourListing(models.Model):
     serv_hours_id = models.IntegerField(primary_key=True)
     serv_hours_date = models.DateField(blank=True, null=True)
@@ -38,12 +25,36 @@ class ServiceHourListing(models.Model):
         managed = False
         db_table = 'service_hour_listing'
 
+    def __str__(self):
+        return str(self.serv_hours_id) + ": " + str(self.serv_hours_task)
 
-class User(models.Model):
-    user_id = models.IntegerField(primary_key=True)
-    email = models.CharField(max_length=255, blank=True, null=True)
-    user_password = models.CharField(max_length=255, blank=True, null=True)
+class Scholar(models.Model):
+    scholar = models.OneToOneField(User, models.DO_NOTHING, primary_key=True)
+    hours_needed = models.IntegerField(blank=True, null=True)
+    hours_rendered = models.IntegerField(blank=True, null=True)
+    contact_no = models.CharField(max_length=20, blank=True, null=True)
+    room_code = models.CharField(max_length=50, blank=True, null=True)
+    room_name = models.CharField(max_length=100, blank=True, null=True)
+    scholar_year = models.IntegerField(blank=True, null=True)
+    course = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'user'
+        db_table = 'scholar'
+
+    def __str__(self):
+        return str(self.scholar)
+
+class Registration(models.Model):
+    reg_id = models.IntegerField(primary_key=True)
+    scholar = models.ForeignKey(Scholar, models.DO_NOTHING, blank=True, null=True)
+    serv_hours = models.ForeignKey(ServiceHourListing, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'registration'
+
+    def __str__(self):
+        return str(self.serv_hours) + " assigned to: " +  str(self.scholar)
+
+
