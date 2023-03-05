@@ -20,6 +20,7 @@ from django.contrib.auth.decorators import login_required
 from homepage.views import home_view
 from scholar_profile.views import profile_view
 from white_card.views import white_card_view
+from Admin.views import admin_view, scholars_listview
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -29,4 +30,10 @@ urlpatterns = [
     path("", login_required(home_view.as_view()), name="home"),
     path("profile/", login_required(profile_view.as_view()), name="profile"),
     path("white_card/", login_required(white_card_view.as_view()), name="white_card"),
+    path("user_admin/", login_required(admin_view.as_view()), name="admin_view"),
+    path(
+        "user_admin/scholars_list/",
+        login_required(scholars_listview.as_view()),
+        name="scholars-listview",
+    ),
 ]
