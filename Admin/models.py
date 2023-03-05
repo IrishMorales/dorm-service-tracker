@@ -8,11 +8,12 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'user'
+        db_table = "user"
 
     def __str__(self):
         return "User#" + str(self.user_id)
-    
+
+
 class ServiceHourListing(models.Model):
     serv_hours_id = models.IntegerField(primary_key=True)
     serv_hours_date = models.DateField(blank=True, null=True)
@@ -23,21 +24,23 @@ class ServiceHourListing(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'service_hour_listing'
+        db_table = "service_hour_listing"
 
     def __str__(self):
         return str(self.serv_hours_id) + ": " + str(self.serv_hours_task)
+
 
 class Admins(models.Model):
     admin = models.OneToOneField(User, models.DO_NOTHING, primary_key=True)
 
     class Meta:
         managed = False
-        db_table = 'admins'
+        db_table = "admins"
 
     def __str__(self):
         return str(self.admin_id)
-    
+
+
 class Scholar(models.Model):
     scholar = models.OneToOneField(User, models.DO_NOTHING, primary_key=True)
     hours_needed = models.IntegerField(blank=True, null=True)
@@ -50,32 +53,43 @@ class Scholar(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'scholar'
+        db_table = "scholar"
 
     def __str__(self):
         return str(self.scholar)
 
+
 class Assignment(models.Model):
     assignment_id = models.IntegerField(primary_key=True)
     admin = models.ForeignKey(Admins, models.DO_NOTHING, blank=True, null=True)
-    serv_hours = models.ForeignKey(ServiceHourListing, models.DO_NOTHING, blank=True, null=True)
+    serv_hours = models.ForeignKey(
+        ServiceHourListing, models.DO_NOTHING, blank=True, null=True
+    )
 
     class Meta:
         managed = False
-        db_table = 'assignment'
+        db_table = "assignment"
 
     def __str__(self):
-        return str(self.serv_hours) + " posted by: " +  str(self.admin)
+        return str(self.serv_hours) + " posted by: " + str(self.admin)
 
 
 class Registration(models.Model):
     reg_id = models.IntegerField(primary_key=True)
-    scholar = models.ForeignKey(Scholar, models.DO_NOTHING, blank=True, null=True)
-    serv_hours = models.ForeignKey(ServiceHourListing, models.DO_NOTHING, blank=True, null=True)
+    scholar = models.ForeignKey(
+        Scholar,
+        models.DO_NOTHING,
+        blank=True,
+        null=True,
+        related_name="registered_under",
+    )
+    serv_hours = models.ForeignKey(
+        ServiceHourListing, models.DO_NOTHING, blank=True, null=True
+    )
 
     class Meta:
         managed = False
-        db_table = 'registration'
+        db_table = "registration"
 
     def __str__(self):
-        return str(self.serv_hours) + " assigned to: " +  str(self.scholar)
+        return str(self.serv_hours) + " assigned to: " + str(self.scholar)
