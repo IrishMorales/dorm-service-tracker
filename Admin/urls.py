@@ -1,10 +1,7 @@
 from django.urls import path
-from .views import *
 
-# Create your views here.
+from . import views
 
-urlpatterns = [
-    path('', get_admin, name='admin'),
-]
+urlpatterns = []
 
 app_name = 'Admin'

@@ -1,24 +1,29 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from django.http import HttpResponse
-from .models import Admins, Registration, Scholar, ServiceHourListing,User
+from django.shortcuts import render
+from django.views.generic import TemplateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Registration
+
+# Create your views here.
 
 
-def get_admin(request):
+class admin_view(TemplateView):
+    template_name = "admin_view.html"
 
-    user = User.objects.all().order_by('user_id')
-    admin = Admins.objects.all()
-    registration = Registration.objects.all()
-    scholars = Scholar.objects.all()
-    service_hours = ServiceHourListing.objects.all()
 
-    context = {
-        'users': user,
-        'admins': admin,
-        'registration': registration,
-        'scholars': scholars,
-        'service_hours': service_hours
+class scholars_listview(ListView):
+    model = Scholar
+    template_name = "scholar_list.html"
+    queryset = Scholar.objects.all()
 
-    }
 
-    return render(request, 'Admin/admin.html', context)
+def admin_scholar_white_card(request, user_id):
+    scholar = Scholar.objects.get(pk=user_id)
+    registration = Scholar.objects.get(user_id)
+    servicehours = ServiceHourListing.objects.all()
+
+
+# class signups_hours_createview(CreateView):
+
+# class admin_scholar_list_profile_detailview(DetailView):
