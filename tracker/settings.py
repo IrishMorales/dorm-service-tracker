@@ -82,7 +82,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "dormtracker",
-        "HOST": "localhost",
+        "HOST": "127.0.0.1",
         "PORT": "",
         "USER": os.getenv("DB_user"),
         "PASSWORD": os.getenv("DB_password"),

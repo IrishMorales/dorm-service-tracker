@@ -6,16 +6,19 @@ from .models import Admins, Registration, Scholar, ServiceHourListing,User
 
 def get_admin(request):
 
+    user = User.objects.all().order_by('user_id')
     admin = Admins.objects.all()
     registration = Registration.objects.all()
-    scholar = Scholar.objects.all()
-    serviceHourListing = ServiceHourListing.objects.all()
-    user = User.objects.all()
+    scholars = Scholar.objects.all()
+    service_hours = ServiceHourListing.objects.all()
+
     context = {
-        'admin': admin,
+        'users': user,
+        'admins': admin,
         'registration': registration,
-        'scholar': scholar,
-        'serviceHourListing': serviceHourListing,
-        'user': user
+        'scholars': scholars,
+        'service_hours': service_hours
+
     }
+
     return render(request, 'Admin/admin.html', context)

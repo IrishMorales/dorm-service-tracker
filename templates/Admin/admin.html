@@ -15,8 +15,9 @@
     <hr class="header">
     <br>
     <br>
-
-    {% for x in admin %}
-        {{x}}
+    {% for user in users %}
+        <div>
+            {{user.user_id}}
+        </div>
     {% endfor %}
 {% endblock %}
