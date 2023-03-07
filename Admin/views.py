@@ -35,12 +35,6 @@ def admin_scholar_white_card(request, user_id):
     )
 
 
-class signups_hours_listview(ListView):
-    model = ServiceHourListing
-    template_name = "signup_hours.html"
-    queryset = ServiceHourListing.objects.all()
-
-
 def admin_scholar_list_profile(request, user_id):
     registration = Registration.objects.select_related("serv_hours").get(
         scholar=user_id

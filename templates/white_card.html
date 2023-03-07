@@ -41,27 +41,14 @@
         </table>
     </div>
 
-    <div class="flex-column white_card-table">
-        <table class="flex">
-            <tr>
-                <th></th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Bldg</th>
-                <th>Remarks</th>
-                <th>Tasks Performed</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Month XX, 20XX</td>
-                <td>0000 - 0000</td>
-                <td>XXX</td>
-                <td>Remarks</td>
-                <td>Tasks Performed</td>
-                <td>Status</td>
-            </tr>
-        </table>
+    <div class="flex-column">
+        {% for listing in object_list%}
+        <li><p>{{listing.serv_hours_task}}</p></li>
+        <li><p>{{listing.serv_hours_date}}</p></li>
+        <li><p>{{listing.serv_hours_time}}</p></li>
+        <li><p>{{listing.serv_hours_loc}}</p></li>
+        <li><p>{{listing.serv_hours_slot_count}}</p></li>
+        {% endfor %}
     </div>
 </div>
 </main>
