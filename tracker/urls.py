@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-from Admin.views import admin_view, scholars_listview
+from Admin.views import admin_view, scholars_listview, signups_hoursview
 from Scholar.views import scholar_view, profile_view, white_card_view
 
 urlpatterns = [
@@ -39,6 +39,9 @@ urlpatterns = [
         login_required(scholars_listview.as_view()),
         name="scholars-listview",
     ),
-    # is this for the login_required thing
-    # the what what is the this
+    path(
+        "user_admin/signups_hours/",
+        login_required(signups_hoursview.as_view()),
+        name="signups_hours",
+    ),
 ]

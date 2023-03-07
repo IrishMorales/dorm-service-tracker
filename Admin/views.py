@@ -16,12 +16,16 @@ class scholars_listview(ListView):
     queryset = Scholar.objects.all()
 
 
+class signups_hoursview(ListView):
+    model = ServiceHourListing
+    template_name = "signups_hours.html"
+    queryset = ServiceHourListing.objects.all()
+
+
 def admin_scholar_white_card(request, user_id):
     scholar = Scholar.objects.get(pk=user_id)
     registration = Scholar.objects.get(user_id)
     servicehours = ServiceHourListing.objects.all()
 
-
-# class signups_hours_createview(CreateView):
 
 # class admin_scholar_list_profile_detailview(DetailView):
