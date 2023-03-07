@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}List of Dorm Scholars{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'profile' %}">Profile</a></p>
+    <p><a href="">White Card</a></p>
+    <a href="{% url 'home' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>SCHOLAR'S WHITE CARD</h2>
+    
+    <p>{{ registration.reg_id }}</p>
+    <p>{{ scholar.room_code}}</p>
+    <p>{{ registration.serv_hours.serv_hours_task }}</p>
+
+</main>
+{% endblock %}

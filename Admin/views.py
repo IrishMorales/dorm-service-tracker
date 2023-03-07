@@ -23,9 +23,31 @@ class signups_hoursview(ListView):
 
 
 def admin_scholar_white_card(request, user_id):
-    scholar = Scholar.objects.get(pk=user_id)
-    registration = Scholar.objects.get(user_id)
-    servicehours = ServiceHourListing.objects.all()
+    registration = Registration.objects.select_related("serv_hours").get(
+        scholar=user_id
+    )
+    scholar = Scholar.objects.get(scholar=user_id)
+
+    return render(
+        request,
+        "scholars_white_card.html",
+        {"registration": registration, "scholar": scholar},
+    )
 
 
-# class admin_scholar_list_profile_detailview(DetailView):
+class signups_hours_listview(ListView):
+    model = ServiceHourListing
+    template_name = "signup_hours.html"
+    queryset = ServiceHourListing.objects.all()
+
+
+def admin_scholar_list_profile(request, user_id):
+    registration = Registration.objects.select_related("serv_hours").get(
+        scholar=user_id
+    )
+    scholar = Scholar.objects.get(scholar=user_id)
+    return render(
+        request,
+        "admin_scholars_profile.html",
+        {"registration": registration, "scholar": scholar},
+    )

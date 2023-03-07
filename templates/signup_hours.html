@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}List of Dorm Scholars{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'profile' %}">Profile</a></p>
+    <p><a href="">White Card</a></p>
+    <a href="{% url 'home' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>SIGNUP HOURS</h2>
+<!-- idk if you're actually going to use a list or a table for this -->
+<ul>
+    {% for object in object_list%}
+    <li><p>{{object.serv_hours_date}}{{object.serv_hours_time}}{{object.serv_hours_loc}}</p></li>
+    {% endfor %}   
+</ul> 
+</main>
+{% endblock %}
