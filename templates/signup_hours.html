@@ -13,12 +13,12 @@
 </header>
 
 <main>
-<h2>LIST OF DORM SCHOLARS</h2>
+<h2>SIGNUP HOURS</h2>
 <!-- idk if you're actually going to use a list or a table for this -->
 <ul>
     {% for object in object_list%}
-    <li><p>{{object.room_code}}</p></li>
-    {% endfor %}    
-</ul>
+    <li><p>{{object.serv_hours_date}}{{object.serv_hours_time}}{{object.serv_hours_loc}}</p></li>
+    {% endfor %}   
+</ul> 
 </main>
 {% endblock %}
