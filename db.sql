@@ -40,7 +40,7 @@ CREATE TABLE admins (
   FOREIGN KEY (admin_id) REFERENCES user(user_id)
 );
 
-/** PUT ANY ASSOCIATIVE ENTITIES HERE **/
+-- PUT ANY ASSOCIATIVE ENTITIES HERE 
 
 CREATE TABLE registration (
   reg_id INT NOT NULL PRIMARY KEY,
@@ -59,7 +59,7 @@ CREATE TABLE assignment (
   FOREIGN KEY (serv_hours_id) REFERENCES service_hour_listing(serv_hours_id)
 );
 
-/** POPULATING TABLES **/
+--Populate Tables
 
 INSERT INTO user(user_id, email, user_password) VALUES
 (1001, 'sch_uno@email.com', 'qwerty1213'),
