@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Dorm Scholars{% endblock %}
+{% block title %}Signups Hours{% endblock %}
 
 {% block content %}
 <header>
@@ -13,11 +13,14 @@
 </header>
 
 <main>
-<h2>LIST OF DORM SCHOLARS</h2>
-<!-- idk if you're actually going to use a list or a table for this -->
+<h2>SIGNUPS HOURS</h2>
 <ul>
-    {% for object in object_list%}
-    <li><p>{{object.room_code}}</p></li>
+    {% for listing in object_list%}
+    <li><p>{{listing.serv_hours_task}}</p></li>
+    <li><p>{{listing.serv_hours_date}}</p></li>
+    <li><p>{{listing.serv_hours_time}}</p></li>
+    <li><p>{{listing.serv_hours_loc}}</p></li>
+    <li><p>{{listing.serv_hours_slot_count}}</p></li>
     {% endfor %}
 </ul>
 </main>

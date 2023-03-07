@@ -59,7 +59,7 @@ CREATE TABLE assignment (
   FOREIGN KEY (serv_hours_id) REFERENCES service_hour_listing(serv_hours_id)
 );
 
---Populate Tables
+-- Populate Tables
 
 INSERT INTO user(user_id, email, user_password) VALUES
 (1001, 'sch_uno@email.com', 'qwerty1213'),

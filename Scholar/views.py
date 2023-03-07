@@ -6,8 +6,12 @@ from django.views.generic.edit import CreateView
 from .models import *
 
 
-def scholar_view(TemplateView):
+class scholar_view(TemplateView):
     template_name = "scholar_view.html"
+
+
+class profile_view(TemplateView):
+    template_name = "profile.html"
 
 
 def view_profile(request, user_id):
@@ -25,6 +29,12 @@ def view_profile(request, user_id):
             "service_hours": service_hours,
         },
     )
+
+
+class white_card_view(ListView):
+    model = ServiceHourListing  # Change this to only listings done by the scholar
+    template_name = "white_card.html"
+    queryset = ServiceHourListing.objects.all()
 
 
 def scholar_white_card(request, user_id):
