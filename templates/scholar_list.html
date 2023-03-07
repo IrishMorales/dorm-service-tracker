@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}List of Dorm Scholars{% endblock %}
+{% block title %}Dorm Scholars{% endblock %}
 
 {% block content %}
 <header>
-    <p><a href="{% url 'profile' %}">Profile</a></p>
-    <p><a href="">White Card</a></p>
-    <a href="{% url 'home' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
-    <p><a href="">Swap Hours</a></p>
+    <p><a href="{% url 'scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="">Signups Hours</a></p>
+    <a href="{% url 'admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
@@ -17,7 +17,7 @@
 <ul>
     {% for object in object_list%}
     <li><p>{{object.room_code}}</p></li>
-    {% endfor %}    
+    {% endfor %}
 </ul>
 </main>
 {% endblock %}

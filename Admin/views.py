@@ -5,8 +5,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Registration
 
-# Create your views here.
-
 
 class admin_view(TemplateView):
     template_name = "admin_view.html"

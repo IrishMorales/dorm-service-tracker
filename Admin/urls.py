@@ -4,4 +4,4 @@ from . import views
 
 urlpatterns = []
 
-app_name = 'Admin'
+app_name = "Admin"
