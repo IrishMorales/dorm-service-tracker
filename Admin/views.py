@@ -5,8 +5,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Registration
 
-# Create your views here.
-
 
 class admin_view(TemplateView):
     template_name = "admin_view.html"
@@ -18,12 +16,32 @@ class scholars_listview(ListView):
     queryset = Scholar.objects.all()
 
 
+class signups_hoursview(ListView):
+    model = ServiceHourListing
+    template_name = "signups_hours.html"
+    queryset = ServiceHourListing.objects.all()
+
+
 def admin_scholar_white_card(request, user_id):
-    scholar = Scholar.objects.get(pk=user_id)
-    registration = Scholar.objects.get(user_id)
-    servicehours = ServiceHourListing.objects.all()
+    registration = Registration.objects.select_related("serv_hours").get(
+        scholar=user_id
+    )
+    scholar = Scholar.objects.get(scholar=user_id)
+
+    return render(
+        request,
+        "scholars_white_card.html",
+        {"registration": registration, "scholar": scholar},
+    )
 
 
-# class signups_hours_createview(CreateView):
-
-# class admin_scholar_list_profile_detailview(DetailView):
+def admin_scholar_list_profile(request, user_id):
+    registration = Registration.objects.select_related("serv_hours").get(
+        scholar=user_id
+    )
+    scholar = Scholar.objects.get(scholar=user_id)
+    return render(
+        request,
+        "admin_scholars_profile.html",
+        {"registration": registration, "scholar": scholar},
+    )
