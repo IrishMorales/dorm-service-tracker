@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<header class="nav">
+    <p><a href="">Profile</a></p>
+    <p><a href="">White Card</a></p>
+    <a href="" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>Profile</h2>
+<div class="flex-row">
+    <div class="card flex-3-2">
+        <table>
+            <tr class="align-left">
+                <th>Name</th>
+                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+            </tr>
+            <tr  class="align-left">
+                <th>ID Number</th>
+                <td>{{ user_details.user_id }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Yr. & Course Code</th>
+                <td>{{ scholar_details.scholar_year }} {{ scholar_details.course }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>OBF Email</th>
+                <td>{{ user_details.email }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Bldg. & Room No.</th>
+                <td>{{ scholar_details.room_code }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Contact No.</th>
+                <td>{{ scholar_details.contact_no }}</td>
+            </tr>
+        </table>
+        <p><a href="">Browse Dorm Assistants' Kit</a></p>
+    </div>
+    <div class="card flex profile-deloading flex-column">
+        <h3>Deloading Request Status</h3>
+        <p class="flex">Not submitted</p>
+        <button><a href="">Fill up Form</a></button>
+    </div>
+</div>
+
+<div class="card profile-signup">
+    <h2>Signup</h2>
+    <p>You have not signed up for dorm service hours yet.</p>
+    <button><a href="">Sign Up</a></button>
+</div>
+</main>
+{% endblock %}

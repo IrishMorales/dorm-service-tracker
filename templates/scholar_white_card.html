@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}List of Dorm Scholars{% endblock %}
+
+{% block content %}
+
+<header>
+    <p><a href="">Profile</a></p>
+    <p><a href="">White Card</a></p>
+    <a href="" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>SCHOLAR'S WHITE CARD</h2>
+
+<div class="flex-row">
+    <div class="card flex-3-2">
+        <table>
+            <tr class="align-left">
+                <th>Name</th>
+                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+            </tr>
+            <tr  class="align-left">
+                <th>ID Number</th>
+                <td>{{ scholar_details.scholar_id }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Bldg. & Room No.</th>
+                <td>{{ scholar_details.room_code }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Contact No.</th>
+                <td>{{ scholar_details.contact_no }}</td>
+            </tr>
+
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td>Time</td>
+                    <td>Bldg</td>
+                    <td>Remarks</td>
+                    <td>Tasks Performed</td>
+                    <td>Status</td>
+                </tr>
+
+                {% for entry in service_hours %}
+
+                <div>
+                    <div>
+                        {{ entry.serv_hours_date }}
+                       
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+
+            </table>
+        </table>
+    </div>
+</div>
+
+</main>
+
+{% endblock %}
