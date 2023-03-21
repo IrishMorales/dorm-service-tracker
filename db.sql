@@ -1,4 +1,4 @@
-userDROP DATABASE IF EXISTS dormtracker;
+DROP DATABASE IF EXISTS dormtracker;
 CREATE DATABASE dormtracker;
 USE dormtracker;
 DROP TABLE IF EXISTS user;
