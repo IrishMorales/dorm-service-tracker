@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dorm Scholars{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>ADD SERVICE HOURS SLOTS</h2>
+<!-- idk if you're actually going to use a list or a table for this -->
+
+
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <div>
+            <input type="submit" value="Add Slot">
+        </div>
+        <br>
+    </form>
+
+
+
+
+
+</main>
+{% endblock %}
