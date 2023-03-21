@@ -23,25 +23,7 @@ from Scholar.views import scholar_view, profile_view, white_card_view
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", auth_views.LoginView.as_view()),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("user_scholar/", login_required(scholar_view.as_view()), name="scholar_view"),
-    path(
-        "user_scholar/profile/", login_required(profile_view.as_view()), name="profile"
-    ),
-    path(
-        "user_scholar/white_card/",
-        login_required(white_card_view.as_view()),
-        name="white_card",
-    ),
-    path("user_admin/", login_required(admin_view.as_view()), name="admin_view"),
-    path(
-        "user_admin/scholars_list/",
-        login_required(scholars_listview.as_view()),
-        name="scholars-listview",
-    ),
-    path(
-        "user_admin/signups_hours/",
-        login_required(signups_hoursview.as_view()),
-        name="signups_hours",
-    ),
+    path("accounts/", include("django.contrib.auth.urls")),    
+    path('user_scholar/', include('Scholar.urls', namespace='Scholar')),
+    path('user_admin/', include('Admin.urls', namespace='Admin')),
 ]

@@ -15,10 +15,11 @@
 </div>
 
 <div class="flex-row center homepage-card-div">
-    <div class="card homepage-card"><p class="center"><a href="{% url 'scholars-listview' %}">Dorm Scholars</a></p></div>
-    <div class="card homepage-card"><p class="center"><a href="{% url 'signups_hours' %}">Signups Hours</a></p></div>
+    <div class="card homepage-card"><p class="center"><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p></div>
+    <div class="card homepage-card"><p class="center"><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p></div>
     <div class="card homepage-card"><p class="center"><a href="">Requests</a></p></div>
     <div class="card homepage-card"><p class="center"><a href="">Contact</a></p></div>
 </div>
 </main>
+<br><br>
 {% endblock %}

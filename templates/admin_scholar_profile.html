@@ -5,9 +5,9 @@
 
 {% block content %}
 <header>
-    <p><a href="{% url 'scholars-listview' %}">Dorm Scholars</a></p>
-    <p><a href="{% url 'signups_hours' %}">Signups Hours</a></p>
-    <a href="{% url 'admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
@@ -42,19 +42,16 @@
                 <td>{{ scholar_details.contact_no }}</td>
             </tr>
         </table>
-        <p><a href="">Browse Dorm Assistants' Kit</a></p>
     </div>
     <div class="card flex profile-deloading flex-column">
         <h3>Deloading Request Status</h3>
         <p class="flex">Not submitted</p>
-        <button><a href="">Fill up Form</a></button>
     </div>
 </div>
 
 <div class="card profile-signup">
     <h2>Signup</h2>
-    <p>You have not signed up for dorm service hours yet.</p>
-    <button><a href="">Sign Up</a></button>
+    <p>They have not signed up for dorm service hours yet.</p>
 </div>
 </main>
 {% endblock %}
