@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS dormtracker;
+userDROP DATABASE IF EXISTS dormtracker;
 CREATE DATABASE dormtracker;
 USE dormtracker;
 DROP TABLE IF EXISTS user;
@@ -98,3 +98,4 @@ INSERT INTO assignment (assignment_id, admin_id, serv_hours_id) VALUES
 (551, 209997, 101),
 (552, 209998, 102),
 (553, 209999, 103);
+
