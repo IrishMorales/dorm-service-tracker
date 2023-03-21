@@ -7,9 +7,6 @@ from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Regis
 from .forms import AddSlot
 from datetime import datetime, timedelta
 
-
->>>>>>> 3002359 (added forms.py to admin, added automation script to views.py in admin)
-
 class admin_view(TemplateView):
     template_name = "admin_view.html"
 
@@ -49,7 +46,10 @@ def admin_scholar_list_profile(request, user_id):
         {"registration": registration, "scholar_details": scholar_details},
     )
 
-<<<<<<< HEAD
+def daterange(start_date, end_date):
+    for n in range(int((end_date - start_date).days)):
+        yield start_date + timedelta(n)
+
 def admin_add_slots(request):
     registration = Registration.objects.all()
     if request.method == 'POST':
@@ -58,13 +58,14 @@ def admin_add_slots(request):
             slot_count = form.cleaned_data.get('serv_hours_slot_count')
             location = form.cleaned_data.get('serv_hours_loc')
             task = form.cleaned_data.get('serv_hours_task')
-            times = ["08:00", "09:30", "11:00", "01:00", "14:00", "15:30"]
+            start_times = ["08:00", "09:30", "11:00", "013:00", "14:00", "15:30"]
+            end_times = ["09:30", "11:00", "12:00", "14:00", "15:30", "17:00"]
             start_date = datetime.strptime(form.cleaned_data.get('serv_hours_date_start'), '%Y-%m-%d').date()
             end_date = datetime.strptime(form.cleaned_data.get('serv_hours_date_end'), '%Y-%m-%d').date() + timedelta(days=1)
             for single_date in daterange(start_date, end_date):
                 date = single_date.strftime("%Y-%m-%d")
-                for time in times:
-                    listing = ServiceHourListing(serv_hours_date = date, serv_hours_time = time, serv_hours_loc = location, serv_hours_slot_count = slot_count, serv_hours_task = task)
+                for start_time, end_time in zip(start_times, end_times):
+                    listing = ServiceHourListing(serv_hours_date = date, serv_hours_start_time = start_time, serv_hours_end_time = end_time, serv_hours_loc = location, serv_hours_slot_count = slot_count, serv_hours_task = task)
                     listing.save()
             return redirect('signup_hours/add_slots')
     else:
