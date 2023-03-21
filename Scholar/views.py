@@ -13,31 +13,37 @@ class scholar_view(TemplateView):
 class profile_view(TemplateView):
     template_name = "profile.html"
 
-
-def view_profile(request, user_id):
-    personal_information = User.objects.get(pk=user_id)
-    hours_rendered = Scholar.hours_rendered.get(pk=user_id)
-    hours_needed = hours_rendered + Scholar.hours_needed.get(pk=user_id)
-    service_hours = ServiceHourListing.objects.all()
-    return render(
-        request,
-        "personal_information.html",
-        {
-            "personal_information": personal_information,
-            "hours_rendered": hours_rendered,
-            "hours_needed": hours_needed,
-            "service_hours": service_hours,
-        },
-    )
-
-
 class white_card_view(ListView):
     model = ServiceHourListing  # Change this to only listings done by the scholar
     template_name = "white_card.html"
     queryset = ServiceHourListing.objects.all()
 
+def view_profile(request, user_id):
+    user_details = User.objects.get(pk=user_id)
+    scholar_details = Scholar.objects.get(pk=user_id)
+    servHoursListing_details = ServiceHourListing.objects.all()
+    return render(
+        request,
+        "scholar_profile.html",
+        {
+            "user_details": user_details,
+            "scholar_details": scholar_details,
+            "servHoursListing_details": servHoursListing_details,
+        },
+    )
+
 
 def scholar_white_card(request, user_id):
-    scholar = Scholar.objects.get(pk=user_id)
-    registration = Scholar.objects.get(user_id)
-    servicehours = ServiceHourListing.objects.all()
+    scholar_details = Scholar.objects.get(pk=user_id)
+    user_details = User.objects.get(pk=user_id)
+    registration_details = Registration.objects.filter(scholar=user_id)
+    service_hours = ServiceHourListing.objects.filter(serv_hours_id=registration_details.reg_id)
+    return render(
+        request,
+        "scholar_white_card.html",
+        {
+            "user_details": user_details,
+            "scholar_details": scholar_details,
+            "servHoursListing_details": service_hours,
+        },
+    )

@@ -5,10 +5,10 @@
 
 {% block content %}
 <header>
-    <p><a href="{% url 'profile' %}">Profile</a></p>
-    <p><a href="">White Card</a></p>
-    <a href="{% url 'home' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
-    <p><a href="">Swap Hours</a></p>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
