@@ -52,20 +52,26 @@ def daterange(start_date, end_date):
 
 def admin_add_slots(request):
     registration = Registration.objects.all()
+    #TODO: automatically generate registrations from listing to user
+    listings = ServiceHourListing.objects.all()
     if request.method == 'POST':
         form = AddSlot(request.POST, request.FILES)
         if form.is_valid():
             slot_count = form.cleaned_data.get('serv_hours_slot_count')
             location = form.cleaned_data.get('serv_hours_loc')
             task = form.cleaned_data.get('serv_hours_task')
-            start_times = ["08:00", "09:30", "11:00", "013:00", "14:00", "15:30"]
+            start_times = ["08:00", "09:30", "11:00", "13:00", "14:00", "15:30"]
             end_times = ["09:30", "11:00", "12:00", "14:00", "15:30", "17:00"]
-            start_date = datetime.strptime(form.cleaned_data.get('serv_hours_date_start'), '%Y-%m-%d').date()
-            end_date = datetime.strptime(form.cleaned_data.get('serv_hours_date_end'), '%Y-%m-%d').date() + timedelta(days=1)
+            start_date = form.cleaned_data.get('serv_hours_date_start')
+            end_date = form.cleaned_data.get('serv_hours_date_end') + timedelta(days=1)
             for single_date in daterange(start_date, end_date):
                 date = single_date.strftime("%Y-%m-%d")
                 for start_time, end_time in zip(start_times, end_times):
-                    listing = ServiceHourListing(serv_hours_date = date, serv_hours_start_time = start_time, serv_hours_end_time = end_time, serv_hours_loc = location, serv_hours_slot_count = slot_count, serv_hours_task = task)
+                    if not listings.exists():
+                        id = 0
+                    else:
+                        id = ServiceHourListing.objects.last().serv_hours_id + 1
+                    listing = ServiceHourListing(serv_hours_id = id, serv_hours_date = date, serv_hours_start_time = start_time, serv_hours_end_time = end_time, serv_hours_loc = location, serv_hours_slot_count = slot_count, serv_hours_task = task)
                     listing.save()
             return redirect('signup_hours/add_slots')
     else:
