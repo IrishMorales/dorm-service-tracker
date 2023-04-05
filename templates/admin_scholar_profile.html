@@ -4,11 +4,11 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<header class="nav">
-    <p><a href="">Profile</a></p>
-    <p><a href="{% url 'white_card' %}">White Card</a></p>
-    <a href="{% url 'scholar_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
-    <p><a href="">Swap Hours</a></p>
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
@@ -19,42 +19,39 @@
         <table>
             <tr class="align-left">
                 <th>Name</th>
-                <td>Surname, First Name MI.</td>
+                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
             </tr>
             <tr  class="align-left">
                 <th>ID Number</th>
-                <td>2XXXXX</td>
+                <td>{{ scholar_details.scholar.user_id }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Yr. & Course Code</th>
-                <td># BX XXXX</td>
+                <td>{{ scholar_details.scholar_year }} {{ scholar_details.course }}</td>
             </tr>
             <tr  class="align-left">
                 <th>OBF Email</th>
-                <td>firstname.lastname@obf.ateneo.edu</td>
+                <td>{{ user_details.email }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Bldg. & Room No.</th>
-                <td>UDS304</td>
+                <td>{{ scholar_details.room_code }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Contact No.</th>
-                <td>09XX - XXX - XXXX</td>
+                <td>{{ scholar_details.contact_no }}</td>
             </tr>
         </table>
-        <p><a href="">Browse Dorm Assistants' Kit</a></p>
     </div>
     <div class="card flex profile-deloading flex-column">
         <h3>Deloading Request Status</h3>
         <p class="flex">Not submitted</p>
-        <button><a href="">Fill up Form</a></button>
     </div>
 </div>
 
 <div class="card profile-signup">
     <h2>Signup</h2>
-    <p>You have not signed up for dorm service hours yet.</p>
-    <button><a href="">Sign Up</a></button>
+    <p>They have not signed up for dorm service hours yet.</p>
 </div>
 </main>
 {% endblock %}

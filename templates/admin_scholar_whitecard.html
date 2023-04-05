@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>WHITECARD</h2>
+
+
+<div class="flex-row">
+    <div class="card flex-3-2">
+        <table>
+            <tr class="align-left">
+                <th>Name</th>
+                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+            </tr>
+            <tr  class="align-left">
+                <th>ID Number</th>
+                <td>{{ scholar_details.scholar.user_id }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Yr. & Course Code</th>
+                <td>{{ scholar_details.scholar_year }} {{ scholar_details.course }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>OBF Email</th>
+                <td>{{ user_details.email }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Bldg. & Room No.</th>
+                <td>{{ scholar_details.room_code }}</td>
+            </tr>
+            <tr  class="align-left">
+                <th>Contact No.</th>
+                <td>{{ scholar_details.contact_no }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br><br>
+
+<table align = "center" border="1">
+    
+        <tr>
+            <th>DATE</th>
+            <th>START TIME</th>
+            <th>END TIME</th>
+            <th>BLDG</th>
+            <th>REMARKS</th>
+            <th>TASKS PERFORMED</th>
+            <th>RENDERED (Y/N)</th>
+        </tr>
+
+        {% for reg in registration %}
+     
+            <tr>
+                <td>{{ reg.serv_hours.serv_hours_date }}</td>
+                <td>{{ reg.serv_hours.serv_hours_start_time }}</td>
+                <td>{{ reg.serv_hours.serv_hours_end_time }}</td>
+                <td>{{ reg.serv_hours.serv_hours_loc }}</td>
+                <td></td>
+                <td>{{ reg.serv_hours.serv_hours_task }}</td>
+
+                <td>
+                    {% if reg.serv_hours.is_rendered == 0 %}
+                        No
+                    {% else %}
+                        Yes
+                    {% endif %}
+                </td>
+
+            </tr>
+
+        {% endfor %}
+</table>
+
+
+
+</div>
+
+
+</main>
+{% endblock %}

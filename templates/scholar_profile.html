@@ -5,9 +5,9 @@
 
 {% block content %}
 <header class="nav">
-    <p><a href="">Profile</a></p>
-    <p><a href="{% url 'white_card' %}">White Card</a></p>
-    <a href="{% url 'scholar_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="{{ user_details.user_id }}/">Profile</a></p>
+    <p><a href="{{ user_details.user_id }}/white_card/">White Card</a></p>
+    <a href="{% url 'Scholar:scholar_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Swap Hours</a></p>
     <p><a href="">Contact</a></p>
 </header>
@@ -19,27 +19,27 @@
         <table>
             <tr class="align-left">
                 <th>Name</th>
-                <td>Surname, First Name MI.</td>
+                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
             </tr>
             <tr  class="align-left">
                 <th>ID Number</th>
-                <td>2XXXXX</td>
+                <td>{{ user_details.user_id }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Yr. & Course Code</th>
-                <td># BX XXXX</td>
+                <td>{{ scholar_details.scholar_year }} {{ scholar_details.course }}</td>
             </tr>
             <tr  class="align-left">
                 <th>OBF Email</th>
-                <td>firstname.lastname@obf.ateneo.edu</td>
+                <td>{{ user_details.email }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Bldg. & Room No.</th>
-                <td>UDS304</td>
+                <td>{{ scholar_details.room_code }}</td>
             </tr>
             <tr  class="align-left">
                 <th>Contact No.</th>
-                <td>09XX - XXX - XXXX</td>
+                <td>{{ scholar_details.contact_no }}</td>
             </tr>
         </table>
         <p><a href="">Browse Dorm Assistants' Kit</a></p>

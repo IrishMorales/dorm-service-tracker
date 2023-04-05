@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Signups Hours{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>SIGNUPS HOURS</h2>
+<table align = "center" border="1">
+    
+        <tr>
+            
+            <th>DATE</th>
+            <th>START TIME</th>
+            <th>END TIME</th>
+            <th>BLDG</th>
+            <th>REMARKS</th>
+            <th>TASKS PERFORMED</th>
+            <th>RENDERED (Y/N)</th>
+        </tr>
+
+        {% for reg in object_list %}
+     
+            <tr>
+                <td>{{ reg.serv_hours_date }}</td>
+                <td>{{ reg.serv_hours_start_time }}</td>
+                <td>{{ reg.serv_hours_end_time }}</td>
+                <td>{{ reg.serv_hours_loc }}</td>
+                <td></td>
+                <td>{{ reg.serv_hours_task }}</td>
+
+                <td>
+                    {% if reg.is_rendered == 0 %}
+                        No
+                    {% else %}
+                        Yes
+                    {% endif %}
+                </td>
+
+            </tr>
+
+        {% endfor %}
+</table>
+    
+
+</main>
+{% endblock %}

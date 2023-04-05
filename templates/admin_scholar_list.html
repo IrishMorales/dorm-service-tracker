@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dorm Scholars{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>LIST OF DORM SCHOLARS</h2>
+<!-- idk if you're actually going to use a list or a table for this -->
+
+<table border="1">
+    {% for object in object_list%}
+    <div>
+            <div>
+                {{ object.scholar_LN }}, {{ object.scholar_FN }} {{ object.scholar_MI }}.
+            </div>
+
+            <div>
+                {{ object.room_code }}
+            </div>
+            
+            <div>
+                <a href="profile/{{ object.scholar.user_id }}">View Profile</a>
+            </div>
+
+            <div>
+                <a href="white_card/{{ object.scholar.user_id }}">View White Card</a>
+            </div>
+            <br>
+    </div>
+        
+    {% endfor %}
+
+
+</table>
+
+
+
+
+
+
+
+</main>
+{% endblock %}

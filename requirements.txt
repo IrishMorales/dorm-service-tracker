@@ -9,7 +9,7 @@ click==8.0.2
 colorama==0.4.6
 crashtest==0.4.1
 distlib==0.3.6
-Django==4.1.6
+Django==4.1.7
 dulwich==0.20.50
 filelock==3.9.0
 html5lib==1.1

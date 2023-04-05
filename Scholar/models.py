@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class User(models.Model):
     user_id = models.IntegerField(primary_key=True)
     email = models.CharField(max_length=255, blank=True, null=True)
@@ -16,10 +16,12 @@ class User(models.Model):
 class ServiceHourListing(models.Model):
     serv_hours_id = models.IntegerField(primary_key=True)
     serv_hours_date = models.DateField(blank=True, null=True)
-    serv_hours_time = models.TimeField(blank=True, null=True)
+    serv_hours_start_time = models.TimeField(blank=True, null=True)
+    serv_hours_end_time = models.TimeField(blank=True, null=True)
     serv_hours_loc = models.CharField(max_length=255, blank=True, null=True)
     serv_hours_slot_count = models.IntegerField(blank=True, null=True)
     serv_hours_task = models.CharField(max_length=255, blank=True, null=True)
+    is_rendered = models.BooleanField()
 
     class Meta:
         managed = False
@@ -30,6 +32,9 @@ class ServiceHourListing(models.Model):
 
 class Scholar(models.Model):
     scholar = models.OneToOneField(User, models.DO_NOTHING, primary_key=True)
+    scholar_FN = models.CharField(max_length=50, blank=True, null=True)
+    scholar_LN = models.CharField(max_length=50, blank=True, null=True)
+    scholar_MI = models.CharField(max_length=50, blank=True, null=True)
     hours_needed = models.IntegerField(blank=True, null=True)
     hours_rendered = models.IntegerField(blank=True, null=True)
     contact_no = models.CharField(max_length=20, blank=True, null=True)
