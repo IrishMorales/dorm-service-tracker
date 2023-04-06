@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -9,14 +10,19 @@ from .models import *
 class scholar_view(TemplateView):
     template_name = "scholar_view.html"
 
+    model = User
+    slug_field = "id"
+
 
 class profile_view(TemplateView):
     template_name = "profile.html"
+
 
 class white_card_view(ListView):
     model = ServiceHourListing  # Change this to only listings done by the scholar
     template_name = "white_card.html"
     queryset = ServiceHourListing.objects.all()
+
 
 def view_profile(request, user_id):
     user_details = User.objects.get(pk=user_id)
@@ -37,7 +43,9 @@ def scholar_white_card(request, user_id):
     scholar_details = Scholar.objects.get(pk=user_id)
     user_details = User.objects.get(pk=user_id)
     registration_details = Registration.objects.filter(scholar=user_id)
-    service_hours = ServiceHourListing.objects.filter(serv_hours_id=registration_details.reg_id)
+    service_hours = ServiceHourListing.objects.filter(
+        serv_hours_id=registration_details.reg_id
+    )
     return render(
         request,
         "scholar_white_card.html",

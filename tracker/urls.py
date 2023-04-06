@@ -1,29 +1,21 @@
-"""tracker URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.http import HttpResponseRedirect
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-from Admin.views import admin_view, scholars_listview, signups_hoursview
-from Scholar.views import scholar_view, profile_view, white_card_view
 
+# TODO: Add if-else block here so that it redirects to admin view if user is admin, scholar view if user is scholar
+@login_required
+def login_redirect(request):
+    return HttpResponseRedirect(f"user_scholar/{request.user.id}")
+
+
+# General URLs
 urlpatterns = [
+    path("login_redirect", login_redirect, name="login_redirect"),
     path("admin/", admin.site.urls),
     path("", auth_views.LoginView.as_view()),
-    path("accounts/", include("django.contrib.auth.urls")),    
-    path('user_scholar/', include('Scholar.urls', namespace='Scholar')),
-    path('user_admin/', include('Admin.urls', namespace='Admin')),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("user_scholar/", include("Scholar.urls", namespace="Scholar")),
+    path("user_admin/", include("Admin.urls", namespace="Admin")),
 ]
