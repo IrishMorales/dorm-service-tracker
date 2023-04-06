@@ -5,42 +5,53 @@
 
 {% block content %}
 <header>
-    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
-    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <p><a href="{% url 'Admin:scholars-listview' %}">LIST OF<br>DORM SCHOLARS</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br> Hours</a></p>
     <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
 <main>
-<h2>LIST OF DORM SCHOLARS</h2>
-<!-- idk if you're actually going to use a list or a table for this -->
+<h2 class="headerColor">LIST OF DORM SCHOLARS</h2>
+<div class="scholar_list-filter">
+    <div><p class = "search">Search  <textarea rows="1" cols="50"></textarea></p> </div>
+    <div><p class="sort">Sort by  <textarea rows="1" cols="50"></textarea></p> </div>
+</div>
 
-<table border="1">
-    {% for object in object_list%}
-    <div>
-            <div>
-                {{ object.scholar_LN }}, {{ object.scholar_FN }} {{ object.scholar_MI }}.
-            </div>
+<div class="card">
+    <table id="scholar_list-table">
+        {% for object in object_list%}
+            <tr class="innerCard">
+                <td><span id="lastName">{{ object.scholar_LN }}</span>, {{ object.scholar_FN }} {{ object.scholar_MI }}.</td>
+                <td>{{ object.room_code }}</td>
+                <td><a href="profile/{{ object.scholar.user_id }}">View Profile</a></td>
+                <td><a href="white_card/{{ object.scholar.user_id }}">View White Card</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+        <ul class="step-links">
+            {% if page_obj.has_previous %}
+                <li><a href="?page=1">&lt;&lt;</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+            {% else %}
+                <li><a href="">&lt;&lt;</a></li>
+                <li><a href="">&lt;</a></li>
+            {% endif %}
+            <li id="page_number"><span>{{ page_obj.number|stringformat:"02d" }}</span></li>
 
-            <div>
-                {{ object.room_code }}
-            </div>
-            
-            <div>
-                <a href="profile/{{ object.scholar.user_id }}">View Profile</a>
-            </div>
-
-            <div>
-                <a href="white_card/{{ object.scholar.user_id }}">View White Card</a>
-            </div>
-            <br>
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a></li>
+            {% else %}
+                <li><a href="">&gt;</a></li>
+                <li><a href="">&gt;&gt;</a></li>
+            {% endif %}
+        </ul>
     </div>
-        
-    {% endfor %}
+</div>
 
-
-</table>
 
 
 

@@ -5,8 +5,8 @@
 
 {% block content %}
 <header>
-    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
-    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <p><a href="{% url 'Admin:scholars-listview' %}">LIST OF<br>DORM SCHOLARS</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br> Hours</a></p>
     <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
@@ -16,10 +16,10 @@
 <h2>Profile</h2>
 <div class="flex-row">
     <div class="card flex-3-2">
-        <table>
+        <table id="profile-details">
             <tr class="align-left">
                 <th>Name</th>
-                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+                <td><span>{{ scholar_details.scholar_LN }}</span>, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
             </tr>
             <tr  class="align-left">
                 <th>ID Number</th>
@@ -42,16 +42,20 @@
                 <td>{{ scholar_details.contact_no }}</td>
             </tr>
         </table>
+        <div class="profile-edit-button"><button>EDIT PROFILE</button></div>
+        
     </div>
     <div class="card flex profile-deloading flex-column">
-        <h3>Deloading Request Status</h3>
+        <h3>Deloading Request Status:</h3>
         <p class="flex">Not submitted</p>
+        <div class="deloading-request-button"><button>VIEW REQUEST</button></div>
     </div>
 </div>
 
 <div class="card profile-signup">
     <h2>Signup</h2>
-    <p>They have not signed up for dorm service hours yet.</p>
+    <p>Scholar has not signed up<br>for dorm service hours yet.</p>
+    <div><button>EDIT</button></div>
 </div>
 </main>
 {% endblock %}
