@@ -3,10 +3,11 @@
     Applied in the order of reset.css > base.css > page's css
 ***/
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@700&family=Montserrat&display=swap');
+
 
 * {
     font-size: 100%;
-    font-family: "Inter", sans-serif;
 }
 
 html, body {
@@ -58,14 +59,37 @@ main {
     margin: 10px;
     padding: 20px;
 }
+.innerCard {
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 7px;
+    padding: 10px;
+}
+
 
 .homepage-card-div {
     display: flex;
-    align-items: stretch;
+    align-items: space-between;
+    gap:3vw;
+    margin-top: 3vw;
 }
 
 .homepage-card {
-    width: 200px;
+    width: 13vw;
+    height: 18vw;
+    border-radius: 3vw;
+    background-color: #D9D9D9;
+}
+
+.homepage-card a {
+    color: #000000;
+    font-size: 1.5vw;
+    font-family: "K2D", "sans-serif";
+    text-decoration: underline;
+    text-underline-offset: 1em;
+}
+.homepage-card p {
+    margin-top: 10vw;
 }
 
 .align-right {
@@ -78,7 +102,7 @@ header {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
-    background-color: rgb(9, 9, 9);
+    background: linear-gradient(#600735, #1F2F62);
     justify-content: space-around;
 }
 
@@ -86,6 +110,11 @@ header a:link, header a:visited {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: "K2D", sans-serif;
+}
+
+header p{
+    text-align: center;
 }
 
 header a:hover {
@@ -105,7 +134,10 @@ footer {
 h2 {
     text-align: center;
     text-transform: uppercase;
+    font-size: 2.6em;
     padding: 0 20px;
+    color: #1F2F62;
+    font-family: "K2D", sans-serif;
 }
 
 .align-left {
@@ -113,8 +145,12 @@ h2 {
 }
 
 table * {
-    padding-right: 50px;
     margin: auto 0;
+}
+
+table tr td {
+    font-family: "Montserrat", "sans-serif";
+    letter-spacing: 0.1em;
 }
 
 .profile-deloading, .profile-signup {
@@ -128,3 +164,345 @@ table * {
 .white_card-table td {
     border: 1px solid;
 }
+.search, .sort {
+    font-family: "K2D", "sans-serif";
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 4vw;
+}
+.step-links {
+    padding-left: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 0.5vw;
+}
+.step-links #page_number {
+    margin-top: -0.2vw;
+    border: 1px solid #B1B1B1;
+    padding: 0.1vw 1vw 0.1vw 1vw;
+    border-radius: 0.5vw;
+}
+.step-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: linear-gradient(90deg, #600735, #1F2F62);
+    padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+}
+
+/* Scholars List */
+.scholar_list-filter {
+    padding: 0 0.8em 0 0.8em;
+    display: flex;
+    justify-content: space-between;
+}
+#lastName {
+    text-transform: uppercase;
+    padding-right: 0;
+}
+#scholar_list-table {
+    width: 100%;
+    border-spacing: .7vw;
+}
+#scholar_list-table tr {
+    display: flex;
+    width:96%;
+    gap: .73%;
+}
+#scholar_list-table tr td{
+    font-size: 1.1vw;
+    padding: 0.5em;
+}
+#scholar_list-table tr td:first-child {
+    background-color: #D9D9D9;
+    font-weight: 575;
+    width: 48.7%;
+}
+#scholar_list-table tr td:nth-child(2) {
+    background-color: #D9D9D9;
+    font-weight: 575;
+    text-align: center;
+    width: 10.7%;
+}
+#scholar_list-table tr td:nth-child(3) {
+    background-color: #D9D9D9;
+    font-weight: 575;
+    text-align: center;
+    width: 21.5%;
+}
+#scholar_list-table tr td:nth-child(3) a{
+    padding: 0.3em 1.2em 0.3em 1.2em;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+#scholar_list-table tr td:last-child{
+    background-color: #D9D9D9;
+    text-align: center;
+    width: 21.5%;
+}
+#scholar_list-table tr td:last-child a{
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    font-weight: bold;
+    justify-content: center;
+    color: black;
+}
+
+
+/* ----- Admin Scholar Profile -----*/
+#profile-details {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    width: 80%;
+    border-spacing: .5em;
+}
+#profile-details th{
+    font-family: "Montserrat", "sans-serif";
+    color: #600735;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+
+}
+#profile-details td {
+    font-family: "Montserrat", "sans-serif";
+    letter-spacing: 0;
+    font-weight: 500;
+    color: #1F2F62;
+}
+#profile-details span{
+    font-weight: 700;
+    padding-right: 0;
+}
+.profile-edit-button {
+    display: flex;
+    justify-content: center;
+    margin: 2em 1em 2em 1em;
+}
+.profile-edit-button button{
+    font-family: "K2D", "sans-serif";
+    padding: 0.5em 4.5em 0.5em 4.5em;
+    border-radius: 0.8em;
+    background: linear-gradient(90deg, #600735, #1F2F62);
+    color: white;
+}
+.profile-deloading h3 {
+    font-family: "K2D", "sans-serif";
+    color: #1F2F62;
+    font-size: 1.25em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+.profile-deloading p  {
+    font-family: "Montserrat", "sans-serif";
+    margin-top: 2.65em;
+    margin-bottom: 0;
+    font-size: 1.25em;
+    letter-spacing: 0.05em;
+}
+.deloading-request-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.deloading-request-button button {
+    font-family: "K2D", "sans-serif";
+    padding: 0.5em 4.5em 0.5em 4.5em;
+    border-radius: 0.8em;
+    background: linear-gradient(90deg, #600735, #1F2F62);
+    color: white;
+}
+.profile-signup {
+    font-family: "Montserrat", "sans-serif";
+}
+
+.profile-signup p {
+    margin: 6em 0em 9em 0em;
+}
+
+.profile-signup div{
+    display: flex;
+    justify-content: end;
+}
+.profile-signup div button{
+    font-family: "K2D", "sans-serif";
+    margin: 0em 2em 1em 0em;
+    padding: 0.5em 3.5em 0.5em 3.5em;
+    border-radius: 0.8em;
+    background: linear-gradient(90deg, #600735, #1F2F62);
+    color: white;
+}
+
+
+
+
+/* Scholars White Card */
+.admin-scholar-white-card {
+    padding: 1.5em 1.5em 1.5em 1.5em;
+}
+.white-card-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+.white-card-details td:first-child{
+    color:#600735;
+    width: 11em;
+    font-weight: 550;
+    font-size: 1.3vw;
+}
+.white-card-details td:nth-child(2){
+    color:#1F2F62;
+    font-weight: 550;
+    font-size: 1.3vw;
+}
+.white-card-details span {
+    font-weight: bold;
+    padding-right: 0;
+}
+
+.admin-scholar-white-card-summary {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-scholar-white-card-header {
+    display: flex;
+    padding: 2vw 1.5vw 2vw 1.5vw;
+    background: linear-gradient(#1F2F62, #600735);
+    width:96.5%;
+    gap: 1%;
+    margin-bottom: 2vw;
+}
+
+.admin-scholar-white-card-header td {
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-weight: bold;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.admin-scholar-white-card-body {
+    display: flex;
+    padding: 2vw 1vw 2vw 1vw;
+    gap: 1%;
+    width:96%;
+}
+
+.admin-scholar-white-card-body td{
+    text-align: center;
+    background-color: #D9D9D9;
+    padding: 1.2% 2% 1.2% 2%;
+}
+
+.admin-scholar-white-card-header td:first-child {
+    width: .5%;
+    
+}
+.admin-scholar-white-card-body td:first-child{
+    width: .5%;
+    background-color: white;
+    font-weight: bolder ;
+}
+
+.admin-scholar-white-card-header td:nth-child(2) {
+    width: 10%;
+}
+.admin-scholar-white-card-body td:nth-child(2) {
+    width: 10%;
+}
+.admin-scholar-white-card-header td:nth-child(3) {
+    width: 15%;
+}
+.admin-scholar-white-card-body td:nth-child(3) {
+    width: 15%;
+}
+.admin-scholar-white-card-header td:nth-child(4) {
+    width: 12%;
+}
+.admin-scholar-white-card-body td:nth-child(4) {
+    width: 12.3%;
+}
+.admin-scholar-white-card-header td:nth-child(5) {
+    width: 10%;
+}
+.admin-scholar-white-card-body td:nth-child(5) {
+    width: 10%;
+}
+.admin-scholar-white-card-header td:nth-child(6) {
+    width: 13%;
+}
+.admin-scholar-white-card-body td:nth-child(6) {
+    width: 13%;
+}
+.admin-scholar-white-card-header td:last-child {
+    width: 5%;
+}
+.admin-scholar-white-card-body td:last-child {
+    width: 5%;
+}
+
+
+/* Admin Signup Slots  */
+.solidline {
+    width:100%;
+    border-top: 3px solid #bbb;
+}
+.signup-hour-filters {
+    display: flex;
+    justify-content: space-between;
+}
+.serv-hour-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+.serv-hour-list tr {
+    border-bottom: 1px solid #000000;
+}
+.serv-hour-list td {
+    font-family: "Montserrat", "sans-serif";
+    text-align: center;
+    
+    padding: 1.25vw 1.5vw 1.25vw 1.5vw;
+    
+}
+.serv-hour-list td div {
+    background-color: #D9D9D9;
+    padding: 0.5vw 0.5vw 0.5vw 0.5vw;
+}
+
+.serv-hour-list td:first-child {
+    text-align: center;
+    width: 36.8%;
+
+}
+.serv-hour-list td:first-child div {
+    width: 75%;
+    margin-left: 30%;
+}
+.serv-hour-list td:nth-child(2) {
+    width: 21.68%;
+    margin-right: 0;
+}
+.serv-hour-list td:nth-child(2) div {
+    width: 80%;
+    margin-left: 15%;
+}
+.serv-hour-list td:last-child {
+    width: 24.91%;
+
+}
+.serv-hour-list td:last-child div {
+    width: 60%;
+}
+
+
+

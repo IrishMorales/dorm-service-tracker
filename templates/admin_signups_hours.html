@@ -5,8 +5,8 @@
 
 {% block content %}
 <header>
-    <p><a href="{% url 'Admin:scholars-listview' %}">Dorm Scholars</a></p>
-    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups Hours</a></p>
+    <p><a href="{% url 'Admin:scholars-listview' %}">LIST OF<br>DORM SCHOLARS</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br> Hours</a></p>
     <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
@@ -14,41 +14,64 @@
 
 <main>
 <h2>SIGNUPS HOURS</h2>
-<table align = "center" border="1">
-    
-        <tr>
-            
-            <th>DATE</th>
-            <th>START TIME</th>
-            <th>END TIME</th>
-            <th>BLDG</th>
-            <th>REMARKS</th>
-            <th>TASKS PERFORMED</th>
-            <th>RENDERED (Y/N)</th>
-        </tr>
-
-        {% for reg in object_list %}
-     
+<div class="card">
+    <div class="signup-hour-filters">
+        <table>
             <tr>
-                <td>{{ reg.serv_hours_date }}</td>
-                <td>{{ reg.serv_hours_start_time }}</td>
-                <td>{{ reg.serv_hours_end_time }}</td>
-                <td>{{ reg.serv_hours_loc }}</td>
-                <td></td>
-                <td>{{ reg.serv_hours_task }}</td>
-
-                <td>
-                    {% if reg.is_rendered == 0 %}
-                        No
-                    {% else %}
-                        Yes
-                    {% endif %}
-                </td>
-
+                <td><p class = "search">Search<textarea rows="1" cols="30"></textarea></p></td>
             </tr>
-
+            <tr>
+                <td><p class="sort">Sort by <textarea rows="1" cols="25"></textarea></p></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td><button>ADD SLOT</button></td>
+                <td><button>ADD MULTIPLE SLOTS</button></td>
+            </tr>
+            <tr>
+                <td><button>DELETE SLOT</button></td>
+                <td><button>DELETE MULTIPLE SLOTS</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button>EDIT SLOTS</button></td>
+            </tr>
+        </table>
+    </div>
+    <hr class="solidline">
+    <table class="serv-hour-list">
+        {% for object in object_list %}
+        <tr>
+            <td><div>{{ object.serv_hours_date }}</div></td>
+            <td><div>{{ object.serv_hours_start_time }} - {{ object.serv_hours_end_time }}</div></td>
+            <td><div>{{ object.serv_hours_loc }}</div></td>
+        </tr>
+        
         {% endfor %}
-</table>
+    </table>
+    <div class="pagination">
+        <ul class="step-links">
+            {% if page_obj.has_previous %}
+                <li><a href="?page=1">&lt;&lt;</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+            {% else %}
+                <li><a href="">&lt;&lt;</a></li>
+                <li><a href="">&lt;</a></li>
+            {% endif %}
+            <li id="page_number"><span>{{ page_obj.number|stringformat:"02d" }}</span></li>
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                <li><a href="?page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a></li>
+            {% else %}
+                <li><a href="">&gt;</a></li>
+                <li><a href="">&gt;&gt;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
     
 
 </main>
