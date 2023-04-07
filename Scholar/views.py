@@ -19,7 +19,7 @@ class profile_view(TemplateView):
 
 
 class white_card_view(ListView):
-    model = ServiceHourListing  # Change this to only listings done by the scholar
+    model = ServiceHourListing  # TODO: Change this to only listings done by the scholar
     template_name = "white_card.html"
     queryset = ServiceHourListing.objects.all()
 
@@ -42,7 +42,7 @@ def view_profile(request, user_id):
 def scholar_white_card(request, user_id):
     scholar_details = Scholar.objects.get(pk=user_id)
     user_details = User.objects.get(pk=user_id)
-    registration_details = Registration.objects.filter(scholar=user_id)
+    registration_details = Registration.objects.get(scholar=user_id)
     service_hours = ServiceHourListing.objects.filter(
         serv_hours_id=registration_details.reg_id
     )

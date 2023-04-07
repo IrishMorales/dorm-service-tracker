@@ -6,9 +6,9 @@
 {% block content %}
 
 <header>
-    <p><a href="">Profile</a></p>
-    <p><a href="">White Card</a></p>
-    <a href="" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="{% url 'Scholar:scholar_view_profile' user_id=user_details.user_id %}">Profile</a></p>
+    <p><a href="{% url 'Scholar:scholar_white_card' user_id=user_details.user_id %}">White Card</a></p>
+    <a href="{% url 'Scholar:scholar_view' user_id=user_details.user_id %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Swap Hours</a></p>
     <p><a href="">Contact</a></p>
 </header>
