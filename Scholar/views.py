@@ -32,6 +32,9 @@ def view_profile(request, user_id):
 def scholar_white_card(request, user_id):
     scholar_details = Scholar.objects.get(pk=user_id)
     user_details = User.objects.get(pk=user_id)
+    registration = Registration.objects.select_related("serv_hours").filter(
+        scholar=user_id
+    )
     registration_details = Registration.objects.get(scholar=user_id)
     service_hours = ServiceHourListing.objects.filter(
         serv_hours_id=registration_details.reg_id
@@ -40,6 +43,7 @@ def scholar_white_card(request, user_id):
         request,
         "scholar_white_card.html",
         {
+            "registration": registration,
             "user_details": user_details,
             "scholar_details": scholar_details,
             "servHoursListing_details": service_hours,

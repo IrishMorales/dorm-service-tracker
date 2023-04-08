@@ -100,10 +100,12 @@ header {
     padding: 30px 50px;
     display: flex;
     flex-flow: row nowrap;
+    flex: 0 0 2em;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
+    gap: 13em;
     background: linear-gradient(#600735, #1F2F62);
-    justify-content: space-around;
+    /* justify-content: space-around; */
 }
 
 header a:link, header a:visited {
@@ -487,6 +489,7 @@ table tr td {
 }
 .scholar-white-card-body td:last-child {
     width: 5%;
+    border-radius:2vw;
 }
 
 
