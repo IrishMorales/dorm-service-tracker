@@ -54,7 +54,7 @@ main {
 }
 
 .card {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     margin: 10px;
     padding: 20px;
@@ -101,7 +101,7 @@ header {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     background: linear-gradient(#600735, #1F2F62);
     justify-content: space-around;
 }
@@ -256,40 +256,38 @@ table tr td {
 }
 
 
-/* ----- Admin Scholar Profile -----*/
-#profile-details {
+/* ----- Scholar Profile -----*/
+.profile-details {
+    border-color: #1F2F62;
+}
+
+.profile-details table{
     padding: 0.5em 0.5em 0.5em 0.5em;
     width: 80%;
     border-spacing: .5em;
 }
-#profile-details th{
+.profile-details th{
     font-family: "Montserrat", "sans-serif";
     color: #600735;
     font-weight: 600;
     letter-spacing: 0.1em;
 
 }
-#profile-details td {
+.profile-details td {
     font-family: "Montserrat", "sans-serif";
     letter-spacing: 0;
     font-weight: 500;
     color: #1F2F62;
 }
-#profile-details span{
+.profile-details span{
     font-weight: 700;
     padding-right: 0;
 }
-.profile-edit-button {
-    display: flex;
-    justify-content: center;
-    margin: 2em 1em 2em 1em;
-}
-.profile-edit-button button{
-    font-family: "K2D", "sans-serif";
-    padding: 0.5em 4.5em 0.5em 4.5em;
-    border-radius: 0.8em;
-    background: linear-gradient(90deg, #600735, #1F2F62);
-    color: white;
+
+
+.profile-deloading {
+    height: 20em;
+    border-color: #1F2F62;
 }
 .profile-deloading h3 {
     font-family: "K2D", "sans-serif";
@@ -316,10 +314,19 @@ table tr td {
     padding: 0.5em 4.5em 0.5em 4.5em;
     border-radius: 0.8em;
     background: linear-gradient(90deg, #600735, #1F2F62);
-    color: white;
+}
+
+.deloading-request-button a {
+    color:#D9D9D9;
+    text-decoration: none;
+    letter-spacing: 0.02vw;
 }
 .profile-signup {
     font-family: "Montserrat", "sans-serif";
+    border-color: #600735;
+}
+.profile-signup h2 {
+    margin-top: 1em;
 }
 
 .profile-signup p {
@@ -336,14 +343,46 @@ table tr td {
     padding: 0.5em 3.5em 0.5em 3.5em;
     border-radius: 0.8em;
     background: linear-gradient(90deg, #600735, #1F2F62);
+}
+
+.profile-signup a {
     color: white;
+    text-decoration: none;
+}
+.profile-signup a:visited {
+    color: white;
+    text-decoration: none;
+}
+    /* user-admin-related */
+.profile-edit-button {
+    display: flex;
+    justify-content: center;
+    margin: 3.5em 1em 1.5em 1em;
+}
+.profile-edit-button button{
+    font-family: "K2D", "sans-serif";
+    padding: 0.5em 4.5em 0.5em 4.5em;
+    border-radius: 0.8em;
+    background: linear-gradient(90deg, #600735, #1F2F62);
+    color: white;
+}
+    /* user_scholar-related */
+.dorm-assistant-kit {
+    font-family: "K2D", "sans-serif";
+    text-decoration: none;
+    margin-top: 4em;
+    padding-left: 0.8em;
+    color: #1F2F62;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.dorm-assistant-kit a:visited {
+    color:#1F2F62;
 }
 
 
-
-
 /* Scholars White Card */
-.admin-scholar-white-card {
+.scholar-white-card {
     padding: 1.5em 1.5em 1.5em 1.5em;
 }
 .white-card-details {
@@ -367,12 +406,12 @@ table tr td {
     padding-right: 0;
 }
 
-.admin-scholar-white-card-summary {
+.scholar-white-card-summary {
     width: 100%;
     border-collapse: collapse;
 }
 
-.admin-scholar-white-card-header {
+.scholar-white-card-header {
     display: flex;
     padding: 2vw 1.5vw 2vw 1.5vw;
     background: linear-gradient(#1F2F62, #600735);
@@ -381,7 +420,7 @@ table tr td {
     margin-bottom: 2vw;
 }
 
-.admin-scholar-white-card-header td {
+.scholar-white-card-header td {
     text-align: center;
     color: white;
     text-transform: capitalize;
@@ -390,63 +429,63 @@ table tr td {
     padding-right: 2%;
 }
 
-.admin-scholar-white-card-body {
+.scholar-white-card-body {
     display: flex;
     padding: 2vw 1vw 2vw 1vw;
     gap: 1%;
     width:96%;
 }
 
-.admin-scholar-white-card-body td{
+.scholar-white-card-body td{
     text-align: center;
     background-color: #D9D9D9;
     padding: 1.2% 2% 1.2% 2%;
 }
 
-.admin-scholar-white-card-header td:first-child {
+.scholar-white-card-header td:first-child {
     width: .5%;
     
 }
-.admin-scholar-white-card-body td:first-child{
+.scholar-white-card-body td:first-child{
     width: .5%;
     background-color: white;
     font-weight: bolder ;
 }
 
-.admin-scholar-white-card-header td:nth-child(2) {
+.scholar-white-card-header td:nth-child(2) {
     width: 10%;
 }
-.admin-scholar-white-card-body td:nth-child(2) {
+.scholar-white-card-body td:nth-child(2) {
     width: 10%;
 }
-.admin-scholar-white-card-header td:nth-child(3) {
+.scholar-white-card-header td:nth-child(3) {
     width: 15%;
 }
-.admin-scholar-white-card-body td:nth-child(3) {
+.scholar-white-card-body td:nth-child(3) {
     width: 15%;
 }
-.admin-scholar-white-card-header td:nth-child(4) {
+.scholar-white-card-header td:nth-child(4) {
     width: 12%;
 }
-.admin-scholar-white-card-body td:nth-child(4) {
+.scholar-white-card-body td:nth-child(4) {
     width: 12.3%;
 }
-.admin-scholar-white-card-header td:nth-child(5) {
+.scholar-white-card-header td:nth-child(5) {
     width: 10%;
 }
-.admin-scholar-white-card-body td:nth-child(5) {
+.scholar-white-card-body td:nth-child(5) {
     width: 10%;
 }
-.admin-scholar-white-card-header td:nth-child(6) {
+.scholar-white-card-header td:nth-child(6) {
     width: 13%;
 }
-.admin-scholar-white-card-body td:nth-child(6) {
+.scholar-white-card-body td:nth-child(6) {
     width: 13%;
 }
-.admin-scholar-white-card-header td:last-child {
+.scholar-white-card-header td:last-child {
     width: 5%;
 }
-.admin-scholar-white-card-body td:last-child {
+.scholar-white-card-body td:last-child {
     width: 5%;
 }
 

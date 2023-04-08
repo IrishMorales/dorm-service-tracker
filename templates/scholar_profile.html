@@ -15,11 +15,11 @@
 <main>
 <h2>Profile</h2>
 <div class="flex-row">
-    <div class="card flex-3-2">
+    <div class="card flex-3-2 profile-details">
         <table>
             <tr class="align-left">
                 <th>Name</th>
-                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+                <td><span>{{ scholar_details.scholar_LN }}</span>, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
             </tr>
             <tr  class="align-left">
                 <th>ID Number</th>
@@ -42,19 +42,19 @@
                 <td>{{ scholar_details.contact_no }}</td>
             </tr>
         </table>
-        <p><a href="">Browse Dorm Assistants' Kit</a></p>
+        <div><p class="dorm-assistant-kit"><a href="">Browse Dorm Assistants' Kit</a></p></div>
     </div>
     <div class="card flex profile-deloading flex-column">
         <h3>Deloading Request Status</h3>
         <p class="flex">Not submitted</p>
-        <button><a href="">Fill up Form</a></button>
+        <div class="deloading-request-button"><button><a href="">FILL UP FORM</a></button></div>
     </div>
 </div>
 
 <div class="card profile-signup">
     <h2>Signup</h2>
     <p>You have not signed up for dorm service hours yet.</p>
-    <button><a href="">Sign Up</a></button>
+    <div><button><a href="">SIGN UP</a></button></div>
 </div>
 </main>
 {% endblock %}
