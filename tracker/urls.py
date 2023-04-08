@@ -7,7 +7,13 @@ from django.contrib.auth.decorators import login_required
 # TODO: Add if-else block here so that it redirects to admin view if user is admin, scholar view if user is scholar
 @login_required
 def login_redirect(request):
-    return HttpResponseRedirect(f"user_scholar/{request.user.id}")
+    # TODO: THIS IS A TEMPORARY WORKAROUND TO GET URLS WITH USER ID TO WORK - IT ALWAYS REDIRECTS TO USER 200000
+    return HttpResponseRedirect(f"user_scholar/200000")
+    # TODO: BELOW IS THE PROPER WAY TO REDIRECT BASED ON THE USER'S ID
+    # For now, this works for login but not for any of the profile, white card, admin pages because
+    # the Django project still uses Django's AuthUser model for login, not our project's custom User model
+    # Once the login is configured to use the custom User model, uncomment the line below
+    # return HttpResponseRedirect(f"user_scholar/{request.user.id}")
 
 
 # General URLs
