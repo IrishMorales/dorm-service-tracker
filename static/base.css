@@ -71,12 +71,12 @@ main {
     display: flex;
     align-items: space-between;
     gap:3vw;
-    margin-top: 3vw;
+    margin-top: 1vw;
 }
 
 .homepage-card {
     width: 13vw;
-    height: 18vw;
+    height: 17vw;
     border-radius: 3vw;
     background-color: #D9D9D9;
 }
@@ -89,7 +89,7 @@ main {
     text-underline-offset: 1em;
 }
 .homepage-card p {
-    margin-top: 10vw;
+    margin-top: 10.5vw;
 }
 
 .align-right {
