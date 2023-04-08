@@ -15,7 +15,7 @@
 <main>
 <h2>SCHOLAR'S WHITE CARD</h2>
 
-<div class="card admin-scholar-white-card">
+<div class="card scholar-white-card">
     <div class="white-card-details">
         <table>
             <tr>
@@ -39,8 +39,8 @@
         </table>
     </div>
     <br>
-    <table class="admin-scholar-white-card-summary">
-        <tr class="admin-scholar-white-card-header">
+    <table class="scholar-white-card-summary">
+        <tr class="scholar-white-card-header">
             <td>&nbsp;</td>
             <td>DATE</td>
             <td>TIME</td>
@@ -50,7 +50,7 @@
             <td>STATUS</td>
         </tr>
         {% for reg in registration %}    
-        <tr class="innerCard admin-scholar-white-card-body">
+        <tr class="innerCard scholar-white-card-body">
             <td>{{ forloop.counter}}</td>
             <td>{{ reg.serv_hours.serv_hours_date }}</td>
             <td>{{ reg.serv_hours.serv_hours_start_time }} - {{ reg.serv_hours.serv_hours_end_time }}</td>
@@ -58,7 +58,7 @@
             <td>&nbsp;</td>
             <td>{{ reg.serv_hours.serv_hours_task }}</td>
 
-            <td>
+            <td class="status">
                 {% if reg.serv_hours.is_rendered == 0 %}
                     No
                 {% else %}

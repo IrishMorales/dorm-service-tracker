@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}List of Dorm Scholars{% endblock %}
+{% block title %}Scholar's White Card{% endblock %}
 
 {% block content %}
 
@@ -9,59 +9,86 @@
     <p><a href="{% url 'Scholar:scholar_view_profile' user_id=user_details.user_id %}">Profile</a></p>
     <p><a href="{% url 'Scholar:scholar_white_card' user_id=user_details.user_id %}">White Card</a></p>
     <a href="{% url 'Scholar:scholar_view' user_id=user_details.user_id %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
-    <p><a href="">Swap Hours</a></p>
+    <p><a href="">Swap<br>Hours</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
 <main>
 <h2>SCHOLAR'S WHITE CARD</h2>
 
-<div class="flex-row">
-    <div class="card flex-3-2">
+<div class="card scholar-white-card">
+    <div class="white-card-details">
         <table>
-            <tr class="align-left">
-                <th>Name</th>
-                <td>{{ scholar_details.scholar_LN }}, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
+            <tr>
+                <td>Name</td>
+                <td><span>{{ scholar_details.scholar_LN }}</span>, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}.</td>
             </tr>
-            <tr  class="align-left">
-                <th>ID Number</th>
+            <tr>
+                <td>ID Number</td>
                 <td>{{ scholar_details.scholar_id }}</td>
             </tr>
-            <tr  class="align-left">
-                <th>Bldg. & Room No.</th>
+        </table>
+        <table>
+            <tr>
+                <td>Bldg & Room No.</td>
                 <td>{{ scholar_details.room_code }}</td>
             </tr>
-            <tr  class="align-left">
-                <th>Contact No.</th>
+            <tr>
+                <td>Contact No.</td>
                 <td>{{ scholar_details.contact_no }}</td>
             </tr>
-
-            <table>
-                <tr>
-                    <td>Date</td>
-                    <td>Time</td>
-                    <td>Bldg</td>
-                    <td>Remarks</td>
-                    <td>Tasks Performed</td>
-                    <td>Status</td>
-                </tr>
-
-                {% for entry in service_hours %}
-
-                <div>
-                    <div>
-                        {{ entry.serv_hours.serv_hours_date }}
-                       
-                    </div>
-
-                </div>
-
-                {% endfor %}
-
-
-            </table>
         </table>
+        
     </div>
+    <br>
+
+        <table class="scholar-white-card-summary">
+            <tr class="scholar-white-card-header">
+                <td>&nbsp;</td>
+                <td>DATE</td>
+                <td>TIME</td>
+                <td>BLDG</td>
+                <td>REMARKS</td>
+                <td>TASKS PERFORMED</td>
+                <td>STATUS</td>
+            </tr>
+            {% for entry in servHoursListing_details %}    
+            <tr class="innerCard scholar-white-card-body">
+                <td>{{ forloop.counter}}</td>
+                <td>{{ entry.serv_hours_date }}</td>
+                <td>{{ entry.serv_hours_start_time }} - {{ entry.serv_hours_end_time }}</td>
+                <td>{{ entry.serv_hours_loc }}</td>
+                <td>&nbsp;</td>
+                <td>{{ entry.serv_hours_task }}</td>
+    
+                <td>
+                    {% if entry.is_rendered == 0 %}
+                        No
+                    {% else %}
+                        Yes
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            {% for reg in registration %}    
+        <tr class="innerCard scholar-white-card-body">
+            <td>{{ forloop.counter}}</td>
+            <td>{{ reg.serv_hours.serv_hours_date }}</td>
+            <td>{{ reg.serv_hours.serv_hours_start_time }} - {{ reg.serv_hours.serv_hours_end_time }}</td>
+            <td>{{ reg.serv_hours.serv_hours_loc }}</td>
+            <td>&nbsp;</td>
+            <td>{{ reg.serv_hours.serv_hours_task }}</td>
+
+            <td class="status">
+                {% if reg.serv_hours.is_rendered == 0 %}
+                    No
+                {% else %}
+                    Yes
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </table> 
 </div>
 
 </main>

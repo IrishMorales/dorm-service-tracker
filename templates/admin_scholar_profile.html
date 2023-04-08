@@ -15,8 +15,8 @@
 <main>
 <h2>Profile</h2>
 <div class="flex-row">
-    <div class="card flex-3-2">
-        <table id="profile-details">
+    <div class="card flex-3-2 profile-details">
+        <table>
             <tr class="align-left">
                 <th>Name</th>
                 <td><span>{{ scholar_details.scholar_LN }}</span>, {{ scholar_details.scholar_FN }} {{ scholar_details.scholar_MI}}. </td>
@@ -43,19 +43,18 @@
             </tr>
         </table>
         <div class="profile-edit-button"><button>EDIT PROFILE</button></div>
-        
     </div>
     <div class="card flex profile-deloading flex-column">
         <h3>Deloading Request Status:</h3>
         <p class="flex">Not submitted</p>
-        <div class="deloading-request-button"><button>VIEW REQUEST</button></div>
+        <div class="deloading-request-button"><button><a href="">VIEW REQUEST</a></button></div>
     </div>
 </div>
 
 <div class="card profile-signup">
     <h2>Signup</h2>
     <p>Scholar has not signed up<br>for dorm service hours yet.</p>
-    <div><button>EDIT</button></div>
+    <div><button><a href="">EDIT</a></button></div>
 </div>
 </main>
 {% endblock %}

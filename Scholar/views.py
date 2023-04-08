@@ -40,6 +40,7 @@ def scholar_white_card(request, user_id):
         request,
         "scholar_white_card.html",
         {
+            "registration": registration,
             "user_details": user_details,
             "scholar_details": scholar_details,
             "servHoursListing_details": service_hours,
