@@ -3,10 +3,9 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
-from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Registration
+from .models import ServiceHourListing, Scholar, Registration
 from .forms import AddSlot
-from datetime import datetime, timedelta
-from django.core.paginator import Paginator
+from datetime import timedelta
 
 
 class admin_view(TemplateView):
@@ -88,7 +87,7 @@ def admin_add_slots(request):
                         serv_hours_task=task,
                     )
                     listing.save()
-            return redirect("signup_hours/add_slots")
+            return redirect("Admin:signup-hours-listview")
     else:
         form = AddSlot()
     return render(

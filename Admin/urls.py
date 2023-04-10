@@ -12,7 +12,6 @@ from Admin.views import (
     admin_view,
     scholars_listview,
     signups_hoursview,
-    
 )
 
 urlpatterns = [
@@ -33,11 +32,7 @@ urlpatterns = [
         admin_scholar_list_profile,
         name="admin-scholar-profile",
     ),
-    path(
-        "signup_hours/add_slots",
-        admin_add_slots,
-        name="admin-add-slots"
-    )
+    path("signup_hours/add_slots/", admin_add_slots, name="admin-add-slots"),
 ]
 
 app_name = "Admin"
