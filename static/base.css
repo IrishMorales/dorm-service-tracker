@@ -77,17 +77,35 @@ main {
 .homepage-card {
     width: 13vw;
     height: 17vw;
+    border: 2 solid;
+    border-color: #212e61;
     border-radius: 3vw;
-    background-color: #D9D9D9;
+    box-shadow: 0px 10px 20px 1px #dce4fe;
+    cursor: pointer;
+
+    transform: translateY(0);
+    moz-transition: transform 100ms ease-in-out;
+    -o-transition: transform 100ms ease-in-out;
+    -webkit-transition: transform 100ms ease-in-out;
+    transition: transform 100ms ease-in-out;
+}
+
+.homepage-card:hover {
+    transform: translateY(-20px);
+    moz-transition: transform 100ms ease-in-out;
+    -o-transition: transform 100ms ease-in-out;
+    -webkit-transition: transform 100ms ease-in-out;
+    transition: transform 100ms ease-in-out;
 }
 
 .homepage-card a {
-    color: #000000;
+    color: #212e61;
     font-size: 1.5vw;
     font-family: "K2D", "sans-serif";
     text-decoration: underline;
     text-underline-offset: 1em;
 }
+
 .homepage-card p {
     margin-top: 10.5vw;
 }
@@ -127,6 +145,30 @@ footer {
     text-align: center;
     padding: 30px 10px;
     font-size: 50%;
+}
+
+button {
+    cursor: pointer;
+    font-family: "K2D", "sans-serif";
+    padding: 0.5em 4.5em 0.5em 4.5em;
+    border-radius: 0.8em;
+    background-image: linear-gradient(to right, #600735, #1F2F62, #600735);
+    color: white;
+    text-transform: uppercase;
+
+    background-size: 300% 100%;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+button:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 }
 
 .user-info p {
@@ -311,13 +353,6 @@ table tr td {
     margin-bottom: 2em;
 }
 
-.deloading-request-button button {
-    font-family: "K2D", "sans-serif";
-    padding: 0.5em 4.5em 0.5em 4.5em;
-    border-radius: 0.8em;
-    background: linear-gradient(90deg, #600735, #1F2F62);
-}
-
 .deloading-request-button a {
     color:#D9D9D9;
     text-decoration: none;
@@ -339,13 +374,6 @@ table tr td {
     display: flex;
     justify-content: end;
 }
-.profile-signup div button{
-    font-family: "K2D", "sans-serif";
-    margin: 0em 2em 1em 0em;
-    padding: 0.5em 3.5em 0.5em 3.5em;
-    border-radius: 0.8em;
-    background: linear-gradient(90deg, #600735, #1F2F62);
-}
 
 .profile-signup a {
     color: white;
@@ -360,13 +388,6 @@ table tr td {
     display: flex;
     justify-content: center;
     margin: 3.5em 1em 1.5em 1em;
-}
-.profile-edit-button button{
-    font-family: "K2D", "sans-serif";
-    padding: 0.5em 4.5em 0.5em 4.5em;
-    border-radius: 0.8em;
-    background: linear-gradient(90deg, #600735, #1F2F62);
-    color: white;
 }
     /* user_scholar-related */
 .dorm-assistant-kit {
