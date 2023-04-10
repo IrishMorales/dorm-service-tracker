@@ -84,7 +84,7 @@ main {
     cursor: pointer;
 
     transform: translateY(0);
-    moz-transition: transform 100ms ease-in-out;
+    -moz-transition: transform 100ms ease-in-out;
     -o-transition: transform 100ms ease-in-out;
     -webkit-transition: transform 100ms ease-in-out;
     transition: transform 100ms ease-in-out;
@@ -92,7 +92,7 @@ main {
 
 .homepage-card:hover {
     transform: translateY(-20px);
-    moz-transition: transform 100ms ease-in-out;
+    -moz-transition: transform 100ms ease-in-out;
     -o-transition: transform 100ms ease-in-out;
     -webkit-transition: transform 100ms ease-in-out;
     transition: transform 100ms ease-in-out;
@@ -157,7 +157,7 @@ button {
     text-transform: uppercase;
 
     background-size: 300% 100%;
-    moz-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
@@ -165,10 +165,17 @@ button {
 
 button:hover {
     background-position: 100% 0;
-    moz-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+}
+
+textarea {
+    border: 2 solid;
+    border-color: #212e61;
+    border-radius: 0.5em;
+    resize: none;
 }
 
 .user-info p {
@@ -522,6 +529,11 @@ table tr td {
 .signup-hour-filters {
     display: flex;
     justify-content: space-between;
+}
+.signup-hour-btn {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
 }
 .serv-hour-list {
     width: 100%;
