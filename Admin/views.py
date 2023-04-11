@@ -1,8 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from .models import ServiceHourListing, Scholar, Registration
 from .forms import AddSlot
 from datetime import timedelta
@@ -93,3 +95,11 @@ def admin_add_slots(request):
     return render(
         request, "admin_add_slots.html", {"form": form, "registration": registration}
     )
+
+
+def admin_delete_slots(request, id=None):
+    serv_hours = ServiceHourListing.objects.all()
+    if id != None:
+        serv_hour_slot = ServiceHourListing.objects.get(id=id)
+        serv_hour_slot.delete()
+    return render(request, "admin_delete_slots.html", {"serv_hours": serv_hours})

@@ -9,6 +9,7 @@ from Admin.views import (
     admin_scholar_white_card,
     admin_scholar_list_profile,
     admin_add_slots,
+    admin_delete_slots,
     admin_view,
     scholars_listview,
     signups_hoursview,
@@ -33,6 +34,7 @@ urlpatterns = [
         name="admin-scholar-profile",
     ),
     path("signup_hours/add_slots/", admin_add_slots, name="admin-add-slots"),
+    path("signup_hours/delete_slots/", admin_delete_slots, name="admin-delete-slots"),
 ]
 
 app_name = "Admin"
