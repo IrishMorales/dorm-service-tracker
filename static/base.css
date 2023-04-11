@@ -514,10 +514,6 @@ table tr td {
 .scholar-white-card-header td:last-child {
     width: 5%;
 }
-.scholar-white-card-body td:last-child {
-    width: 5%;
-    border-radius:2vw;
-}
 
 
 /* Admin Signup Slots  */
@@ -550,7 +546,7 @@ table tr td {
 }
 .serv-hour-list td div {
     background-color: #D9D9D9;
-    padding: 0.5vw 0.5vw 0.5vw 0.5vw;
+    padding: 0.5vw;
 }
 
 .serv-hour-list td:first-child {

@@ -28,16 +28,29 @@
             </table>
         </div>
         <hr class="solidline">
-        <table class="serv-hour-list">
-            {% for object in serv_hours %}
-            <tr>
-                <td><div>{{ object.serv_hours_date }}</div></td>
-                <td><div>{{ object.serv_hours_start_time }} - {{ object.serv_hours_end_time }}</div></td>
-                <td><div>{{ object.serv_hours_loc }}</div></td>
-                <td><a href="{% url 'Admin:admin-edit-slots' object.serv_hours_id%}">Edit</a></td>
-            </tr>           
-            {% endfor %}
-        </table>
+        <div class="card scholar-white-card">
+            <table class="scholar-white-card-summary">
+                <tr class="scholar-white-card-header">
+                    <td>&nbsp;</td>
+                    <td>DATE</td>
+                    <td>TIME</td>
+                    <td>BLDG</td>
+                    <td>SLOT COUNT</td>
+                    <td>TASKS PERFORMED</td>
+                </tr>
+                {% for object in serv_hours %}    
+                <tr class="innerCard scholar-white-card-body signup-hour-list-override">
+                    <td>{{ forloop.counter}}</td>
+                    <td>{{ object.serv_hours_date }}</td>
+                    <td>{{ object.serv_hours_start_time }} - {{ object.serv_hours_end_time }}</td>
+                    <td>{{ object.serv_hours_loc }}</td>
+                    <td>{{ object.serv_hours_slot_count }}</td>
+                    <td>{{ object.serv_hours_task }}</td>
+                    <td><a href="{% url 'Admin:admin-edit-slots' object.serv_hours_id%}">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </table> 
+        </div>
     </div>
 </main>
 {% endblock %}
