@@ -1,12 +1,13 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
-from .models import ServiceHourListing, User, Admins, Scholar, Assignment, Registration
-from .forms import AddSlot
-from datetime import datetime, timedelta
-from django.core.paginator import Paginator
+from django.views.generic.edit import CreateView, DeleteView
+from .models import ServiceHourListing, Scholar, Registration
+from .forms import AddSlot, EditSlot
+from datetime import timedelta
 
 
 class admin_view(TemplateView):
@@ -88,9 +89,49 @@ def admin_add_slots(request):
                         serv_hours_task=task,
                     )
                     listing.save()
-            return redirect("signup_hours/add_slots")
+            return redirect("Admin:signup-hours-listview")
     else:
         form = AddSlot()
     return render(
         request, "admin_add_slots.html", {"form": form, "registration": registration}
     )
+
+
+def admin_delete_slots(request, id=None):
+    serv_hours = ServiceHourListing.objects.all()
+    if id != None:
+        serv_hour_slot = ServiceHourListing.objects.get(id=id)
+        serv_hour_slot.delete()
+    return render(request, "admin_delete_slots.html", {"serv_hours": serv_hours})
+
+
+def admin_edit_slots_list(request):
+    serv_hours = ServiceHourListing.objects.all()
+    return render(request, "admin_edit_slots_list.html", {"serv_hours": serv_hours})
+
+
+def admin_edit_slots(request, id=id):
+    if request.method == "POST":
+        form = EditSlot(request.POST, request.FILES)
+        if form.is_valid():
+            location = form.cleaned_data.get("serv_hours_loc")
+            task = form.cleaned_data.get("serv_hours_task")
+            start_time = form.cleaned_data.get("serv_hours_start_time")
+            end_time = form.cleaned_data.get("serv_hours_end_time")
+            date = form.cleaned_data.get("serv_hours_date")
+
+            listing = ServiceHourListing(
+                serv_hours_id=id,
+                serv_hours_loc=location,
+                serv_hours_task=task,
+                serv_hours_slot_count=1,
+                serv_hours_start_time=start_time,
+                serv_hours_end_time=end_time,
+                serv_hours_date=date,
+            )
+            listing.save()
+
+            return redirect("Admin:admin-edit-slots-list")
+    else:
+        form = EditSlot()
+    return render(request, "admin_edit_slots.html", {"form": form})
