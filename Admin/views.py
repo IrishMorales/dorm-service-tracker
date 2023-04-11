@@ -6,7 +6,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
 from .models import ServiceHourListing, Scholar, Registration
-from .forms import AddSlot
+from .forms import AddSlot, EditSlot
 from datetime import timedelta
 
 
@@ -103,3 +103,35 @@ def admin_delete_slots(request, id=None):
         serv_hour_slot = ServiceHourListing.objects.get(id=id)
         serv_hour_slot.delete()
     return render(request, "admin_delete_slots.html", {"serv_hours": serv_hours})
+
+
+def admin_edit_slots_list(request):
+    serv_hours = ServiceHourListing.objects.all()
+    return render(request, "admin_edit_slots_list.html", {"serv_hours": serv_hours})
+
+
+def admin_edit_slots(request, id=id):
+    if request.method == "POST":
+        form = EditSlot(request.POST, request.FILES)
+        if form.is_valid():
+            location = form.cleaned_data.get("serv_hours_loc")
+            task = form.cleaned_data.get("serv_hours_task")
+            start_time = form.cleaned_data.get("serv_hours_start_time")
+            end_time = form.cleaned_data.get("serv_hours_end_time")
+            date = form.cleaned_data.get("serv_hours_date")
+
+            listing = ServiceHourListing(
+                serv_hours_id=id,
+                serv_hours_loc=location,
+                serv_hours_task=task,
+                serv_hours_slot_count=1,
+                serv_hours_start_time=start_time,
+                serv_hours_end_time=end_time,
+                serv_hours_date=date,
+            )
+            listing.save()
+
+            return redirect("Admin:admin-edit-slots-list")
+    else:
+        form = EditSlot()
+    return render(request, "admin_edit_slots.html", {"form": form})
