@@ -5,15 +5,7 @@ from django.urls import path, include
 from django.contrib.auth.decorators import login_required
 
 
-from Admin.views import (
-    admin_scholar_white_card,
-    admin_scholar_list_profile,
-    admin_add_slots,
-    admin_view,
-    scholars_listview,
-    signups_hoursview,
-    
-)
+from Admin.views import *
 
 urlpatterns = [
     path("", login_required(admin_view.as_view()), name="admin_view"),
@@ -33,11 +25,12 @@ urlpatterns = [
         admin_scholar_list_profile,
         name="admin-scholar-profile",
     ),
+    path("signup_hours/add_slots/", admin_add_slots, name="admin-add-slots"),
+    path("signup_hours/delete_slots/", admin_delete_slots, name="admin-delete-slots"),
     path(
-        "signup_hours/add_slots",
-        admin_add_slots,
-        name="admin-add-slots"
-    )
+        "signup_hours/edit_slots/", admin_edit_slots_list, name="admin-edit-slots-list"
+    ),
+    path("signup_hours/edit_slots/<int:id>", admin_edit_slots, name="admin-edit-slots"),
 ]
 
 app_name = "Admin"

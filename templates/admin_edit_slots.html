@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dorm Scholars{% endblock %}
+
+{% block content %}
+<header>
+    <p><a href="{% url 'Admin:scholars-listview' %}">LIST OF<br>DORM SCHOLARS</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br> Hours</a></p>
+    <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Requests</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>EDIT SERVICE HOURS SLOTS</h2>
+    <div class="flex-row center card">
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <div>
+            <input class="btn-style" type="submit" value="Save Changes">
+        </div>
+        <br>
+    </form>
+    </div>
+</main>
+{% endblock %}
