@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
-from .models import ServiceHourListing, Scholar, Registration
+from .models import ServiceHourListing, Scholar, Registration, Assignment
 from .forms import AddSlot, EditSlot
 from datetime import timedelta
 
@@ -97,12 +97,17 @@ def admin_add_slots(request):
     )
 
 
-def admin_delete_slots(request, id=None):
+def admin_delete_slots_list(request):
     serv_hours = ServiceHourListing.objects.all()
-    if id != None:
-        serv_hour_slot = ServiceHourListing.objects.get(id=id)
-        serv_hour_slot.delete()
-    return render(request, "admin_delete_slots.html", {"serv_hours": serv_hours})
+    return render(request, "admin_delete_slots_list.html", {"serv_hours": serv_hours})
+
+
+def admin_delete_slots(request, id=id):
+    serv_hour = ServiceHourListing.objects.get(pk=id)
+    asigned = Assignment.objects.select_related("serv_hours").filter(serv_hours=id)
+    asigned.delete()
+    serv_hour.delete()
+    return redirect("Admin:admin-delete-slots-list")
 
 
 def admin_edit_slots_list(request):

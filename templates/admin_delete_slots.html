@@ -6,38 +6,23 @@
 {% block content %}
 <header>
     <p><a href="{% url 'Admin:scholars-listview' %}">LIST OF<br>DORM SCHOLARS</a></p>
-    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br>Hours</a></p>
+    <p><a href="{% url 'Admin:signup-hours-listview' %}">Signups<br> Hours</a></p>
     <a href="{% url 'Admin:admin_view' %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Requests</a></p>
     <p><a href="">Contact</a></p>
 </header>
 
 <main>
-    <h2>DELETE SERVICE HOURS SLOTS</h2>
-    <div class="card">
-        <div class="signup-hour-filters">
-            <table>
-                <tr>
-                    <td><p class = "search">Search</p></td>
-                    <td><textarea rows="1" cols="25"></textarea></td>
-                </tr>
-                <tr>
-                    <td><p class="sort">Sort by</p></td>
-                    <td><textarea rows="1" cols="25"></textarea></td>
-                </tr>
-            </table>
+<h2>DELETE SERVICE HOURS SLOTS</h2>
+    <div class="flex-row center card">
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <div>
+            <input class="btn-style" type="submit" value="Save Changes">
         </div>
-        <hr class="solidline">
-        <table class="serv-hour-list">
-            {% for object in serv_hours %}
-            <tr>
-                <td><div>{{ object.serv_hours_date }}</div></td>
-                <td><div>{{ object.serv_hours_start_time }} - {{ object.serv_hours_end_time }}</div></td>
-                <td><div>{{ object.serv_hours_loc }}</div></td>
-                <td><a href="{% url 'Admin:admin-delete-slots'%}">Delete</a></td>
-            </tr>           
-            {% endfor %}
-        </table>
+        <br>
+    </form>
     </div>
 </main>
 {% endblock %}
