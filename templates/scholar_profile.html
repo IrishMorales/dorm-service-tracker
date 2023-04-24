@@ -54,7 +54,7 @@
 <div class="card profile-signup">
     <h2>Signup</h2>
     <p>You have not signed up for dorm service hours yet.</p>
-    <div><button href=""><a>SIGN UP</a></button></div>
+    <div><button><a href="{% url 'Scholar:scholar_hours_signup' user_id=user_details.user_id %}">SIGN UP</a></button></div>
 </div>
 </main>
 {% endblock %}
