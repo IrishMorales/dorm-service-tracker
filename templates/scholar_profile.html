@@ -5,8 +5,8 @@
 
 {% block content %}
 <header class="nav">
-    <p><a href="{% url 'Scholar:scholar_view_profile' user_id=user_details.user_id %}">Profile</a></p>
-    <p><a href="{% url 'Scholar:scholar_white_card' user_id=user_details.user_id %}">White Card</a></p>
+    <p><a href="{% url 'Scholar:scholar_view_profile' user_id=user_details.user_id %}">&nbsp;Profile</a></p>
+    <p><a href="{% url 'Scholar:scholar_white_card' user_id=user_details.user_id %}">&nbsp;White Card</a></p>
     <a href="{% url 'Scholar:scholar_view' user_id=user_details.user_id %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
     <p><a href="">Swap<br>Hours</a></p>
     <p><a href="">Contact</a></p>
@@ -54,7 +54,7 @@
 <div class="card profile-signup">
     <h2>Signup</h2>
     <p>You have not signed up for dorm service hours yet.</p>
-    <div><button><a href="{% url 'Scholar:scholar_hours_signup' user_id=user_details.user_id %}">SIGN UP</a></button></div>
+    <div><button href=""><a>SIGN UP</a></button></div>
 </div>
 </main>
 {% endblock %}

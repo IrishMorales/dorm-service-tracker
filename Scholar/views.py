@@ -35,7 +35,8 @@ def scholar_white_card(request, user_id):
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar=user_id
     )
-    registration_details = Registration.objects.filter(scholar=user_id)
+    
+    registration_details = Registration.objects.get(scholar=user_id)
     service_hours = ServiceHourListing.objects.filter(
         serv_hours_id=registration_details.reg_id
     )

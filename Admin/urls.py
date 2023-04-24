@@ -26,8 +26,18 @@ urlpatterns = [
         name="admin-scholar-profile",
     ),
     path("signup_hours/add_slots/", admin_add_slots, name="admin-add-slots"),
-    path("signup_hours/delete_slots/", admin_delete_slots, name="admin-delete-slots"),
     path(
+        "signup_hours/delete_slots/",
+        admin_delete_slots_list,
+        name="admin-delete-slots-list",
+    ),
+    path(
+        "signup_hours/delete_slots/<int:id>",
+        admin_delete_slots,
+        name="admin-delete-slots",
+    ),
+    path(
+
         "signup_hours/edit_slots/", admin_edit_slots_list, name="admin-edit-slots-list"
     ),
     path("signup_hours/edit_slots/<int:id>", admin_edit_slots, name="admin-edit-slots"),
