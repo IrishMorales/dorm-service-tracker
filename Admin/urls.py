@@ -37,6 +37,7 @@ urlpatterns = [
         name="admin-delete-slots",
     ),
     path(
+
         "signup_hours/edit_slots/", admin_edit_slots_list, name="admin-edit-slots-list"
     ),
     path("signup_hours/edit_slots/<int:id>", admin_edit_slots, name="admin-edit-slots"),

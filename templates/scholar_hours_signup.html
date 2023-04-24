@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Scholar's White Card{% endblock %}
+
+{% block content %}
+
+<header>
+    <p><a href="{% url 'Scholar:scholar_view_profile' user_id=user_details.user_id %}">Profile</a></p>
+    <p><a href="{% url 'Scholar:scholar_white_card' user_id=user_details.user_id %}">White Card</a></p>
+    <a href="{% url 'Scholar:scholar_view' user_id=user_details.user_id %}" ><img class="logo" src="{% static 'logo.png' %}"></a>
+    <p><a href="">Swap<br>Hours</a></p>
+    <p><a href="">Contact</a></p>
+</header>
+
+<main>
+<h2>SIGNUP FOR HOURS</h2>
+
+<div>
+    {% for listing in registration %}
+        
+        {{ listing.serv_hours.serv_hours_date }} <br>
+        {{ listing.serv_hours.serv_hours_start_time }} <br>
+        {{ listing.serv_hours.serv_hours_end_time }} <br>
+        {{ listing.serv_hours.serv_hours_loc }} <br><br>
+
+        <button>Enlist</button><br><br><br><br>
+        <div><button><a href="{% url 'Scholar:scholar_enlist_slots' user_id=user_details.user_id  reg_id=listing.reg_id %}">Enlist</a></button></div>
+    {% endfor %}
+</div>
+
+</main>
+
+{% endblock %}

@@ -96,7 +96,6 @@ def admin_add_slots(request):
         request, "admin_add_slots.html", {"form": form, "registration": registration}
     )
 
-
 def admin_delete_slots_list(request):
     serv_hours = ServiceHourListing.objects.all()
     return render(request, "admin_delete_slots_list.html", {"serv_hours": serv_hours})
