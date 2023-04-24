@@ -82,7 +82,10 @@ INSERT INTO scholar(scholar_id, scholar_LN, scholar_FN, scholar_MI, hours_needed
 INSERT INTO service_hour_listing(serv_hours_id, serv_hours_date, serv_hours_start_time, serv_hours_end_time, serv_hours_loc, serv_hours_slot_count, serv_hours_task, is_rendered) VALUES
 (101, '2023-10-02', '13:00', '14:00', 'Location # 1', 2, 'Task # 1', 0),
 (102, '2023-10-02', '08:00', '09:30', 'Location # 2', 2, 'Task # 2', 1),
-(103, '2023-10-02', '15:30', '17:00', 'Location # 3', 2, 'Task # 3', 0);
+(103, '2023-10-02', '15:30', '17:00', 'Location # 3', 2, 'Task # 3', 0),
+(104, '2023-10-02', '13:00', '14:00', 'Location # 1', 2, 'Task # 1', 0),
+(105, '2023-10-02', '08:00', '09:30', 'Location # 2', 2, 'Task # 2', 0),
+(106, '2023-10-02', '15:30', '17:00', 'Location # 3', 2, 'Task # 3', 0);
 
 INSERT INTO admins(admin_id) VALUES
 (209997),
@@ -92,10 +95,15 @@ INSERT INTO admins(admin_id) VALUES
 INSERT INTO registration (reg_id, scholar_id, serv_hours_id) VALUES
 (451, 200001, 101),
 (452, 200001, 102),
-(453, 200000, 103);
+(453, 200000, 103),
+(454, NULL, 104),
+(455, NULL, 105),
+(456, NULL, 106);
 
 INSERT INTO assignment (assignment_id, admin_id, serv_hours_id) VALUES
 (551, 209997, 101),
 (552, 209998, 102),
-(553, 209999, 103);
-
+(553, 209999, 103),
+(554, 209997, 104),
+(555, 209998, 105),
+(556, 209997, 106);
