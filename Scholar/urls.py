@@ -12,7 +12,7 @@ urlpatterns = [
         name="scholar_hours_signup",
     ),
     path(
-        "<int:user_id>/profile/enlist_slot",
+        "<int:user_id>/profile/scholar_enlist_slots/",
         scholar_enlist_slots,
         name="scholar_enlist_slots",
     ),
