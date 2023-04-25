@@ -69,7 +69,6 @@ def scholar_hours_signup(request, user_id):
         },
     )
 
-
 def scholar_enlist_slots(request, reg_id, user_id):
     scholar_details = Scholar.objects.get(pk=user_id)
     user_details = User.objects.get(pk=user_id)
