@@ -112,7 +112,7 @@ main {
 .align-right {
     margin-left: auto;
 }
-
+/* Header NavBar */
 header {
     padding: 30px 50px;
     display: flex;
@@ -122,7 +122,6 @@ header {
     justify-content: center;
     gap: 13em;
     background: linear-gradient(#600735, #1F2F62);
-    /* justify-content: space-around; */
 }
 
 header a:link, header a:visited {
@@ -418,6 +417,7 @@ table tr td {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2em;
+    align-items: stretch;
 }
 .white-card-details td:first-child{
     color:#600735;
@@ -460,9 +460,10 @@ table tr td {
 
 .scholar-white-card-body {
     display: flex;
-    padding: 2vw 1vw 2vw 1vw;
+    padding: 2vw 1vw 2vw 0vw;
     gap: 1%;
-    width:96%;
+    /* width:110%; */
+    align-items: stretch;
 }
 
 .scholar-white-card-body td{
@@ -551,7 +552,7 @@ table tr td {
 
 .serv-hour-list td:first-child {
     text-align: center;
-    width: 36.8%;
+    width: 66.8%;
 
 }
 .serv-hour-list td:first-child div {
