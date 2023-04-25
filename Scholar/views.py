@@ -38,9 +38,7 @@ def scholar_white_card(request, user_id):
         scholar=user_id
     )
     registration_details = Registration.objects.filter(scholar=user_id)
-    service_hours = ServiceHourListing.objects.filter(
-        serv_hours_id=registration_details.reg_id
-    )
+    service_hours = ServiceHourListing.objects.filter(registration__scholar=user_id)
     return render(
         request,
         "scholar_white_card.html",
@@ -59,6 +57,7 @@ def scholar_hours_signup(request, user_id):
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar_id__isnull=True
     )
+
     return render(
         request,
         "scholar_hours_signup.html",
@@ -70,36 +69,28 @@ def scholar_hours_signup(request, user_id):
     )
 
 
-def scholar_enlist_slots(request, reg_id, user_id):
+def scholar_enlist_slot(request, user_id, reg_id):
     scholar_details = Scholar.objects.get(pk=user_id)
     user_details = User.objects.get(pk=user_id)
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar_id__isnull=True
     )
-
-    # build the URL for the 'scholar_enlist_slots' view with the user ID and registration ID
-    url = reverse("scholar_enlist_slots", kwargs={"reg_id": reg_id, "user_id": user_id})
-
     if request.method == "POST":
-        form = EnlistSlot(request.POST, request.FILES)
-        if form.is_valid():
-            reg_id = form.cleaned_data.get("reg_id")
-            user_id = form.cleaned_data.get("user_id")
+        url = reverse("Scholar:scholar_view_profile", args=[user_id, reg_id])
 
-            reg = Registration.objects.get(reg_id=reg_id)
-            reg.scholar = user_id
-            reg.save()
+        enlisted_slot = Registration.objects.get(reg_id=reg_id)
+        enlisted_slot.scholar_id = user_id
+        enlisted_slot.save()
 
-            return redirect("Scholar:scholar_view_profile")
+        return redirect(url)
     else:
-        form = EnlistSlot()
-    return render(
-        request,
-        "scholar_hours_signup.html",
-        {
-            "form": form,
-            "registration": registration,
-            "user_details": user_details,
-            "scholar_details": scholar_details,
-        },
-    )
+        # Handle GET request
+        return render(
+            request,
+            "scholar_hours_signup.html",
+            {
+                "registration": registration,
+                "user_details": user_details,
+                "scholar_details": scholar_details,
+            },
+        )
