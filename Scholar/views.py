@@ -57,6 +57,7 @@ def scholar_hours_signup(request, user_id):
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar_id__isnull=True
     )
+    service_hours = ServiceHourListing.objects.filter(registration__scholar=user_id)
 
     return render(
         request,
@@ -65,6 +66,7 @@ def scholar_hours_signup(request, user_id):
             "registration": registration,
             "user_details": user_details,
             "scholar_details": scholar_details,
+            "servHoursListing_details": service_hours,
         },
     )
 

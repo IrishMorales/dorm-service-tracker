@@ -70,24 +70,6 @@
                 </td>
             </tr>
             {% endfor %}
-            {% for reg in registration %}    
-        <tr class="innerCard scholar-white-card-body">
-            <td>{{ forloop.counter}}</td>
-            <td>{{ reg.serv_hours.serv_hours_date }}</td>
-            <td>{{ reg.serv_hours.serv_hours_start_time }} - {{ reg.serv_hours.serv_hours_end_time }}</td>
-            <td>{{ reg.serv_hours.serv_hours_loc }}</td>
-            <td>&nbsp;</td>
-            <td>{{ reg.serv_hours.serv_hours_task }}</td>
-
-            <td class="status">
-                {% if reg.serv_hours.is_rendered == 0 %}
-                    No
-                {% else %}
-                    Yes
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
         </table> 
 </div>
 
