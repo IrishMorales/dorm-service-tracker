@@ -1,10 +1,12 @@
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .models import *
+from .forms import *
 
 
 class scholar_view(TemplateView):
@@ -35,11 +37,8 @@ def scholar_white_card(request, user_id):
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar=user_id
     )
-    
-    registration_details = Registration.objects.get(scholar=user_id)
-    service_hours = ServiceHourListing.objects.filter(
-        serv_hours_id=registration_details.reg_id
-    )
+    registration_details = Registration.objects.filter(scholar=user_id)
+    service_hours = ServiceHourListing.objects.filter(registration__scholar=user_id)
     return render(
         request,
         "scholar_white_card.html",
@@ -58,6 +57,7 @@ def scholar_hours_signup(request, user_id):
     registration = Registration.objects.select_related("serv_hours").filter(
         scholar_id__isnull=True
     )
+
     return render(
         request,
         "scholar_hours_signup.html",
@@ -69,9 +69,28 @@ def scholar_hours_signup(request, user_id):
     )
 
 
-def scholar_enlist_slots(request, user_id, reg_id):
-    registration = Registration.objects.get(reg_id=reg_id)
-    registration.scholar = Scholar.objects.get(scholar=user_id)
-    registration.save()
+def scholar_enlist_slot(request, user_id, reg_id):
+    scholar_details = Scholar.objects.get(pk=user_id)
+    user_details = User.objects.get(pk=user_id)
+    registration = Registration.objects.select_related("serv_hours").filter(
+        scholar_id__isnull=True
+    )
+    if request.method == "POST":
+        url = reverse("Scholar:scholar_view_profile", args=[user_id, reg_id])
 
-    return redirect("scholar_view_profile")
+        enlisted_slot = Registration.objects.get(reg_id=reg_id)
+        enlisted_slot.scholar_id = user_id
+        enlisted_slot.save()
+
+        return redirect(url)
+    else:
+        # Handle GET request
+        return render(
+            request,
+            "scholar_hours_signup.html",
+            {
+                "registration": registration,
+                "user_details": user_details,
+                "scholar_details": scholar_details,
+            },
+        )

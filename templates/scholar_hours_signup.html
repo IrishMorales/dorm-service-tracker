@@ -24,8 +24,11 @@
         {{ listing.serv_hours.serv_hours_end_time }} <br>
         {{ listing.serv_hours.serv_hours_loc }} <br><br>
 
-        <button>Enlist</button><br><br><br><br>
-        <div><button><a href="{% url 'Scholar:scholar_enlist_slots' user_id=user_details.user_id  reg_id=listing.reg_id %}">Enlist</a></button></div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit"><a href="{% url 'Scholar:scholar_enlist_slot' user_id=user_details.user_id reg_id=listing.reg_id %}">Enlist</a></button>
+        </form>
+        <br><br><br><br>
     {% endfor %}
 </div>
 
