@@ -18,7 +18,7 @@
 
 <div>
     {% for listing in registration %}
-        
+        <div class="card profile-signup">
         {{ listing.serv_hours.serv_hours_date }} <br>
         {{ listing.serv_hours.serv_hours_start_time }} <br>
         {{ listing.serv_hours.serv_hours_end_time }} <br>
@@ -26,9 +26,9 @@
 
         <form method="post">
             {% csrf_token %}
-            <button type="submit"><a href="{% url 'Scholar:scholar_enlist_slot' user_id=user_details.user_id reg_id=listing.reg_id %}">Enlist</a></button>
+            <div><button type="submit"><a href="{% url 'Scholar:scholar_enlist_slot' user_id=user_details.user_id reg_id=listing.reg_id %}">Enlist</a></button></div>
         </form>
-        <br><br><br><br>
+    </div>
     {% endfor %}
 </div>
 
