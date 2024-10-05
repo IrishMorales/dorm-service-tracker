@@ -3,6 +3,11 @@ Tracks service hours and opportunities for dorm scholars of Ateneo de Manila Uni
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
+## Sample Screenshots
+![image](https://github.com/user-attachments/assets/884923c0-a94f-444e-937b-456c635d451a)
+![image](https://github.com/user-attachments/assets/125e14f8-fc5e-4845-b16c-684a69e44ead)
+![image](https://github.com/user-attachments/assets/f04b4dd3-388d-464b-a0e9-7ebadff23fbf)
+
 ## Command Cheatsheet
 ### If setting up the project for the first time on your local machine
 1. Create a virtual environment (open cmd in dorm-service-tracker and do `python3 -m venv venv`)
